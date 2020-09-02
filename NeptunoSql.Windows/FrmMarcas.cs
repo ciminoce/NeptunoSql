@@ -86,7 +86,6 @@ namespace NeptunoSql.Windows
                         SetearFila(r, marca);
                         AgregarFila(r);
                         Helper.MensajeBox("Registro Agregado", Tipo.Success);
-
                     }
                     else
                     {

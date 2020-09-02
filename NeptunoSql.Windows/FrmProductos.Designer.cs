@@ -1,6 +1,6 @@
 ﻿namespace NeptunoSql.Windows
 {
-    partial class FrmCategorias
+    partial class FrmProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DataGridViewDatos = new System.Windows.Forms.DataGridView();
-            this.cmnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmnCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDatos)).BeginInit();
@@ -57,58 +62,57 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 386);
-            this.panel1.TabIndex = 7;
+            this.panel1.Size = new System.Drawing.Size(1026, 544);
+            this.panel1.TabIndex = 9;
             // 
             // DataGridViewDatos
             // 
             this.DataGridViewDatos.AllowUserToAddRows = false;
             this.DataGridViewDatos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DataGridViewDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DataGridViewDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewDatos.ColumnHeadersHeight = 30;
             this.DataGridViewDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cmnCategoria});
+            this.cmnCategoria,
+            this.cmnMarca,
+            this.cmnDescripcion,
+            this.cmnPrecio,
+            this.cmnStock,
+            this.cmnSuspendido});
             this.DataGridViewDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewDatos.Location = new System.Drawing.Point(0, 0);
             this.DataGridViewDatos.MultiSelect = false;
             this.DataGridViewDatos.Name = "DataGridViewDatos";
             this.DataGridViewDatos.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewDatos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewDatos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewDatos.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.DataGridViewDatos.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.DataGridViewDatos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridViewDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewDatos.Size = new System.Drawing.Size(800, 386);
+            this.DataGridViewDatos.Size = new System.Drawing.Size(1026, 544);
             this.DataGridViewDatos.TabIndex = 1;
-            // 
-            // cmnCategoria
-            // 
-            this.cmnCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnCategoria.HeaderText = "Categorías";
-            this.cmnCategoria.Name = "cmnCategoria";
-            this.cmnCategoria.ReadOnly = true;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbBorrar,
@@ -122,9 +126,71 @@
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 64);
-            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Size = new System.Drawing.Size(1026, 64);
+            this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 64);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 64);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 64);
+            // 
+            // cmnCategoria
+            // 
+            this.cmnCategoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cmnCategoria.HeaderText = "Categoría";
+            this.cmnCategoria.Name = "cmnCategoria";
+            this.cmnCategoria.ReadOnly = true;
+            this.cmnCategoria.Width = 103;
+            // 
+            // cmnMarca
+            // 
+            this.cmnMarca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cmnMarca.HeaderText = "Marca";
+            this.cmnMarca.Name = "cmnMarca";
+            this.cmnMarca.ReadOnly = true;
+            this.cmnMarca.Width = 77;
+            // 
+            // cmnDescripcion
+            // 
+            this.cmnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnDescripcion.HeaderText = "Descripción";
+            this.cmnDescripcion.Name = "cmnDescripcion";
+            this.cmnDescripcion.ReadOnly = true;
+            // 
+            // cmnPrecio
+            // 
+            this.cmnPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cmnPrecio.HeaderText = "P. Unitario";
+            this.cmnPrecio.Name = "cmnPrecio";
+            this.cmnPrecio.ReadOnly = true;
+            this.cmnPrecio.Width = 110;
+            // 
+            // cmnStock
+            // 
+            this.cmnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cmnStock.HeaderText = "Stock";
+            this.cmnStock.Name = "cmnStock";
+            this.cmnStock.ReadOnly = true;
+            this.cmnStock.Width = 73;
+            // 
+            // cmnSuspendido
+            // 
+            this.cmnSuspendido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cmnSuspendido.HeaderText = "Suspendido";
+            this.cmnSuspendido.Name = "cmnSuspendido";
+            this.cmnSuspendido.ReadOnly = true;
+            this.cmnSuspendido.Width = 99;
             // 
             // tsbNuevo
             // 
@@ -136,7 +202,6 @@
             this.tsbNuevo.Size = new System.Drawing.Size(50, 61);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbBorrar
             // 
@@ -148,7 +213,6 @@
             this.tsbBorrar.Size = new System.Drawing.Size(49, 61);
             this.tsbBorrar.Text = "Borrar";
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbBorrar.Click += new System.EventHandler(this.tsbBorrar_Click);
             // 
             // tsbEditar
             // 
@@ -160,12 +224,6 @@
             this.tsbEditar.Size = new System.Drawing.Size(46, 61);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 64);
             // 
             // tsbBuscar
             // 
@@ -189,11 +247,6 @@
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 64);
-            // 
             // tsbImprimir
             // 
             this.tsbImprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -205,14 +258,8 @@
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 64);
-            // 
             // tsbCerrar
             // 
-            this.tsbCerrar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsbCerrar.Image = global::NeptunoSql.Windows.Properties.Resources.Close;
             this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -220,19 +267,16 @@
             this.tsbCerrar.Size = new System.Drawing.Size(49, 61);
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
-            // FrmCategorias
+            // FrmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1026, 608);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "FrmCategorias";
-            this.Text = "Categorias";
-            this.Load += new System.EventHandler(this.FrmCategorias_Load);
+            this.Name = "FrmProductos";
+            this.Text = "FrmProductos";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDatos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -245,6 +289,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView DataGridViewDatos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnMarca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnStock;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cmnSuspendido;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
@@ -256,7 +307,5 @@
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
-        private System.Windows.Forms.DataGridView DataGridViewDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnCategoria;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using NeptunoSql.BusinessLayer.Entities;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.ServiceLayer.Servicios;
 using NeptunoSql.ServiceLayer.Servicios.Facades;
 using NeptunoSql.Windows.Helpers;
@@ -9,21 +9,22 @@ using NeptunoSql.Windows.Helpers.Enum;
 
 namespace NeptunoSql.Windows
 {
-    public partial class FrmCategorias : Form
+    public partial class FrmMedidas : Form
     {
-        public FrmCategorias()
+        public FrmMedidas()
         {
             InitializeComponent();
         }
-        private List<Categoria> _lista;
-        private IServicioCategorias _servicio;
+        private List<Medida> lista;
+        private IServicioMedidas _servicio;
+
         private void MostrarEnGrilla()
         {
             DataGridViewDatos.Rows.Clear();
-            foreach (var categoria in _lista)
+            foreach (var medida in lista)
             {
                 DataGridViewRow r = ConstruirFila();
-                SetearFila(r, categoria);
+                SetearFila(r, medida);
                 AgregarFila(r);
             }
         }
@@ -33,11 +34,12 @@ namespace NeptunoSql.Windows
             DataGridViewDatos.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Categoria Categoria)
+        private void SetearFila(DataGridViewRow r, Medida medida)
         {
-            r.Cells[cmnCategoria.Index].Value = Categoria.NombreCategoria;
+            r.Cells[cmnMedida.Index].Value = medida.Denominacion;
+            r.Cells[cmnAbreviatura.Index].Value = medida.Abreviatura;
 
-            r.Tag = Categoria;
+            r.Tag = medida;
         }
 
         private DataGridViewRow ConstruirFila()
@@ -46,42 +48,35 @@ namespace NeptunoSql.Windows
             r.CreateCells(DataGridViewDatos);
             return r;
         }
-        private void FrmCategorias_Load(object sender, System.EventArgs e)
-        {
-            try
-            {
-                _servicio = new ServicioCategorias();
-                _lista = _servicio.GetLista();
-                MostrarEnGrilla();
-            }
-            catch (Exception ex)
-            {
 
-                Helper.MensajeBox(ex.Message, Tipo.Error);
-            }
+        private void tsbCerrar_Click(object sender, System.EventArgs e)
+        {
+            Close();
         }
+
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            FrmCategoriasAE frm = new FrmCategoriasAE();
-            frm.Text = "Nueva Categoria";
+            FrmMedidasAE frm = new FrmMedidasAE();
+            frm.Text = "Nueva Medida";
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.OK)
             {
                 try
                 {
-                    Categoria categoria = frm.GetCategoria();
-                    if (!_servicio.Existe(categoria))
+                    Medida medida = frm.GetMedida();
+                    if (!_servicio.Existe(medida))
                     {
-                        _servicio.Guardar(categoria);
+                        _servicio.Guardar(medida);
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, categoria);
+                        SetearFila(r, medida);
                         AgregarFila(r);
                         Helper.MensajeBox("Registro Agregado", Tipo.Success);
+
                     }
                     else
                     {
-                        Helper.MensajeBox("Categoria repetida", Tipo.Error);
+                        Helper.MensajeBox("Medida repetida", Tipo.Error);
                     }
                 }
                 catch (Exception exception)
@@ -97,9 +92,9 @@ namespace NeptunoSql.Windows
             if (DataGridViewDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = DataGridViewDatos.SelectedRows[0];
-                Categoria categoria = (Categoria)r.Tag;
+                Medida medida = (Medida)r.Tag;
 
-                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la categoria {categoria.NombreCategoria}?",
+                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la medida {medida.Denominacion}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -107,7 +102,7 @@ namespace NeptunoSql.Windows
                 {
                     try
                     {
-                        _servicio.Borrar(categoria.CategoriaId);
+                        _servicio.Borrar(medida.MedidaId);
                         DataGridViewDatos.Rows.Remove(r);
                         Helper.MensajeBox("Registro borrado", Tipo.Success);
                     }
@@ -126,25 +121,26 @@ namespace NeptunoSql.Windows
             if (DataGridViewDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = DataGridViewDatos.SelectedRows[0];
-                Categoria categoria = (Categoria)r.Tag;
-                FrmCategoriasAE frm = new FrmCategoriasAE();
-                frm.Text = "Editar Categoria";
-                frm.SetCategoria(categoria);
+                Medida medida = (Medida)r.Tag;
+                //MarcaDto marcaAux =(Medida) medida.Clone();
+                FrmMedidasAE frm = new FrmMedidasAE();
+                frm.Text = "Editar Medida";
+                frm.SetMedida(medida);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        categoria = frm.GetCategoria();
-                        if (!_servicio.Existe(categoria))
+                        medida = frm.GetMedida();
+                        if (!_servicio.Existe(medida))
                         {
-                            _servicio.Guardar(categoria);
-                            SetearFila(r, categoria);
+                            _servicio.Guardar(medida);
+                            SetearFila(r, medida);
                             Helper.MensajeBox("Registro Agregado", Tipo.Success);
                         }
                         else
                         {
-                            Helper.MensajeBox("Categoria Repetida", Tipo.Error);
+                            Helper.MensajeBox("Medida Repetida", Tipo.Error);
                         }
                     }
                     catch (Exception exception)
@@ -155,9 +151,20 @@ namespace NeptunoSql.Windows
             }
         }
 
-        private void tsbCerrar_Click(object sender, EventArgs e)
+        private void FrmMedidas_Load(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                _servicio = new ServicioMedidas();
+                lista = _servicio.GetLista();
+                MostrarEnGrilla();
+            }
+            catch (Exception ex)
+            {
+
+                Helper.MensajeBox(ex.Message, Tipo.Error);
+            }
+
         }
     }
 }

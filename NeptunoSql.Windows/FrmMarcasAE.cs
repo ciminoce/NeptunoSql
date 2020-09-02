@@ -67,5 +67,6 @@ namespace NeptunoSql.Windows
             DialogResult = DialogResult.Cancel;
 
         }
+
     }
 }

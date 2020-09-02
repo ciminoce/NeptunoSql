@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\Categoria.cs" />
     <Compile Include="Entities\Marca.cs" />
+    <Compile Include="Entities\Medida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
