@@ -46,7 +46,7 @@
             this.TextBoxMedida.MaxLength = 100;
             this.TextBoxMedida.Name = "TextBoxMedida";
             this.TextBoxMedida.Size = new System.Drawing.Size(456, 22);
-            this.TextBoxMedida.TabIndex = 12;
+            this.TextBoxMedida.TabIndex = 0;
             // 
             // label1
             // 
@@ -79,7 +79,7 @@
             this.TextBoxAbreviatura.MaxLength = 100;
             this.TextBoxAbreviatura.Name = "TextBoxAbreviatura";
             this.TextBoxAbreviatura.Size = new System.Drawing.Size(456, 22);
-            this.TextBoxAbreviatura.TabIndex = 12;
+            this.TextBoxAbreviatura.TabIndex = 1;
             // 
             // btnCancelar
             // 
@@ -89,7 +89,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(135, 63);
-            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(135, 63);
-            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;

@@ -29,6 +29,22 @@ namespace NeptunoSql.Windows
             }
         }
 
+        private void ActualizarGrilla()
+        {
+            try
+            {
+                _servicio = new ServicioMedidas();
+                lista = _servicio.GetLista();
+                MostrarEnGrilla();
+            }
+            catch (Exception ex)
+            {
+
+                Helper.MensajeBox(ex.Message, Tipo.Error);
+            }
+
+        }
+
         private void AgregarFila(DataGridViewRow r)
         {
             DataGridViewDatos.Rows.Add(r);
@@ -57,34 +73,16 @@ namespace NeptunoSql.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            FrmMedidasAE frm = new FrmMedidasAE();
+            FrmMedidasAE frm = new FrmMedidasAE(this);
             frm.Text = "Nueva Medida";
-            DialogResult dr = frm.ShowDialog(this);
-            if (dr == DialogResult.OK)
-            {
-                try
-                {
-                    Medida medida = frm.GetMedida();
-                    if (!_servicio.Existe(medida))
-                    {
-                        _servicio.Guardar(medida);
-                        DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, medida);
-                        AgregarFila(r);
-                        Helper.MensajeBox("Registro Agregado", Tipo.Success);
+            frm.ShowDialog(this);
+        }
 
-                    }
-                    else
-                    {
-                        Helper.MensajeBox("Medida repetida", Tipo.Error);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    Helper.MensajeBox(exception.Message, Tipo.Error);
-                }
-            }
-
+        public void AgregarFila(Medida medida)
+        {
+            DataGridViewRow r = ConstruirFila();
+            SetearFila(r, medida);
+            AgregarFila(r);
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)
@@ -122,8 +120,8 @@ namespace NeptunoSql.Windows
             {
                 DataGridViewRow r = DataGridViewDatos.SelectedRows[0];
                 Medida medida = (Medida)r.Tag;
-                //MarcaDto marcaAux =(Medida) medida.Clone();
-                FrmMedidasAE frm = new FrmMedidasAE();
+                Medida medidaAux =(Medida) medida.Clone();
+                FrmMedidasAE frm = new FrmMedidasAE(this);
                 frm.Text = "Editar Medida";
                 frm.SetMedida(medida);
                 DialogResult dr = frm.ShowDialog(this);
@@ -132,20 +130,15 @@ namespace NeptunoSql.Windows
                     try
                     {
                         medida = frm.GetMedida();
-                        if (!_servicio.Existe(medida))
-                        {
-                            _servicio.Guardar(medida);
-                            SetearFila(r, medida);
-                            Helper.MensajeBox("Registro Agregado", Tipo.Success);
-                        }
-                        else
-                        {
-                            Helper.MensajeBox("Medida Repetida", Tipo.Error);
-                        }
+                        _servicio.Guardar(medida);
+                        SetearFila(r, medida);
+                        Helper.MensajeBox("Registro Agregado", Tipo.Success);
                     }
                     catch (Exception exception)
                     {
+                        SetearFila(r, medidaAux);
                         Helper.MensajeBox(exception.Message, Tipo.Error);
+
                     }
                 }
             }
@@ -153,18 +146,7 @@ namespace NeptunoSql.Windows
 
         private void FrmMedidas_Load(object sender, EventArgs e)
         {
-            try
-            {
-                _servicio = new ServicioMedidas();
-                lista = _servicio.GetLista();
-                MostrarEnGrilla();
-            }
-            catch (Exception ex)
-            {
-
-                Helper.MensajeBox(ex.Message, Tipo.Error);
-            }
-
+            ActualizarGrilla();
         }
     }
 }

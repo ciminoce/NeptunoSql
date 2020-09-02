@@ -97,6 +97,22 @@ namespace NeptunoSql.ServiceLayer.Servicios
             }
         }
 
+        public bool ExisteAbreviatura(Medida medida)
+        {
+            try
+            {
+                _conexion = new ConexionBd();
+                _repositorio = new RepositorioMedidas(_conexion.AbrirConexion());
+                var existe = _repositorio.ExisteAbreviatura(medida);
+                _conexion.CerrarConexion();
+                return existe;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public bool EstaRelacionado(Medida medida)
         {
             return false;

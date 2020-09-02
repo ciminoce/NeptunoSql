@@ -63,11 +63,16 @@ namespace NeptunoSql.DataLayer.Repositorios
 
         private Categoria ConstruirCategoria(SqlDataReader reader)
         {
+            //var categoria=new Categoria();
+            //categoria.CategoriaId = reader.GetInt32(0);
+            //categoria.NombreCategoria = reader.GetString(1);
+            //categoria.Descripcion = reader.GetString(2);
+            //return categoria;
             return new Categoria
             {
                 CategoriaId = reader.GetInt32(0),
                 NombreCategoria = reader.GetString(1),
-                Descripcion =reader[2]!=DBNull.Value? reader.GetString(2):null
+                Descripcion = reader[2] != DBNull.Value ? reader.GetString(2) : null
             };
         }
 
@@ -78,7 +83,7 @@ namespace NeptunoSql.DataLayer.Repositorios
                 //Nuevo registro
                 try
                 {
-                    string cadenaComando = "INSERT INTO Catgorias VALUES(@nombre, @desc)";
+                    string cadenaComando = "INSERT INTO Categorias VALUES(@nombre, @desc)";
                     SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
                     comando.Parameters.AddWithValue("@nombre", categoria.NombreCategoria);
                     comando.Parameters.AddWithValue("@desc", categoria.Descripcion);
@@ -100,11 +105,10 @@ namespace NeptunoSql.DataLayer.Repositorios
                 //Edición
                 try
                 {
-                    string cadenaComando = "UPDATE Categorias SET NombreCategoria=@nombre, Descripcion=@desc WHERE MarcaId=@id";
+                    string cadenaComando = "UPDATE Categorias SET NombreCategoria=@nombre, Descripcion=@desc WHERE CategoriaId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
                     comando.Parameters.AddWithValue("@nombre", categoria.NombreCategoria);
                     comando.Parameters.AddWithValue("@desc", categoria.Descripcion);
-
                     comando.Parameters.AddWithValue("@id", categoria.CategoriaId);
                     comando.ExecuteNonQuery();
 

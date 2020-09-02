@@ -63,7 +63,8 @@ namespace NeptunoSql.Windows
                     categoria = new Categoria();
                 }
 
-                categoria.Descripcion = TextBoxCategoria.Text;
+                categoria.NombreCategoria = TextBoxCategoria.Text;
+                categoria.Descripcion = TextBoxDescripcion.Text;
                 DialogResult = DialogResult.OK;
             }
 

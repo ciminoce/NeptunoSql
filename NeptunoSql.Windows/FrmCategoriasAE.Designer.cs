@@ -103,7 +103,7 @@
             // 
             this.TextBoxDescripcion.Location = new System.Drawing.Point(175, 64);
             this.TextBoxDescripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.TextBoxDescripcion.MaxLength = 200;
+            this.TextBoxDescripcion.MaxLength = 300;
             this.TextBoxDescripcion.Multiline = true;
             this.TextBoxDescripcion.Name = "TextBoxDescripcion";
             this.TextBoxDescripcion.Size = new System.Drawing.Size(460, 92);

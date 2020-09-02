@@ -10,6 +10,7 @@ namespace NeptunoSql.ServiceLayer.Servicios.Facades
         void Guardar(Medida medida);
         void Borrar(int id);
         bool Existe(Medida medida);
+        bool ExisteAbreviatura(Medida medida);
         bool EstaRelacionado(Medida medida);
 
     }

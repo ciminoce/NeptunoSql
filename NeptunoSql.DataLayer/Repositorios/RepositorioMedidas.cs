@@ -100,10 +100,11 @@ namespace NeptunoSql.DataLayer.Repositorios
                 //Edición
                 try
                 {
-                    string cadenaComando = "UPDATE Medidas SET Denominacion=@deno, Abreviatura=@abr WHERE MarcaId=@id";
+                    string cadenaComando = "UPDATE Medidas SET Denominacion=@deno, Abreviatura=@abr WHERE MedidaId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
                     comando.Parameters.AddWithValue("@deno", medida.Denominacion);
                     comando.Parameters.AddWithValue("@abr", medida.Abreviatura);
+                    comando.Parameters.AddWithValue("@id", medida.MedidaId);
                     comando.ExecuteNonQuery();
 
                 }
@@ -145,9 +146,39 @@ namespace NeptunoSql.DataLayer.Repositorios
                 }
                 else
                 {
-                    string cadenaComando = "SELECT MedidaId, Denominacion, Abreviatura FROM Medidas WHERE Denominacion=@nombre AND Marcaid<>@id";
+                    string cadenaComando = "SELECT MedidaId, Denominacion, Abreviatura FROM Medidas WHERE Denominacion=@nombre AND MedidaId<>@id";
                     comando = new SqlCommand(cadenaComando, _sqlConnection);
                     comando.Parameters.AddWithValue("@nombre", medida.Denominacion);
+                    comando.Parameters.AddWithValue("@id", medida.MedidaId);
+
+
+                }
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool ExisteAbreviatura(Medida medida)
+        {
+            try
+            {
+                SqlCommand comando;
+                if (medida.MedidaId == 0)
+                {
+                    string cadenaComando = "SELECT MedidaId, Denominacion, Abreviatura FROM Medidas WHERE Abreviatura=@ab";
+                    comando = new SqlCommand(cadenaComando, _sqlConnection);
+                    comando.Parameters.AddWithValue("@ab", medida.Abreviatura);
+
+                }
+                else
+                {
+                    string cadenaComando = "SELECT MedidaId, Denominacion, Abreviatura FROM Medidas WHERE Abreviatura=@ab AND MedidaId<>@id";
+                    comando = new SqlCommand(cadenaComando, _sqlConnection);
+                    comando.Parameters.AddWithValue("@ab", medida.Abreviatura);
                     comando.Parameters.AddWithValue("@id", medida.MedidaId);
 
 
