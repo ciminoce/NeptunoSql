@@ -7,10 +7,10 @@ namespace NeptunoSql.DataLayer.Repositorios.Facades
     {
         Categoria GetCategoriaPorId(int id);
         List<Categoria> GetLista();
-        void Guardar(Categoria medida);
+        void Guardar(Categoria categoria);
         void Borrar(int id);
-        bool Existe(Categoria medida);
-        bool EstaRelacionado(Categoria medida);
+        bool Existe(Categoria categoria);
+        bool EstaRelacionado(Categoria categoria);
 
     }
 }

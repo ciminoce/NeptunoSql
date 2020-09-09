@@ -1,4 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Drawing.Text;
+using System.Windows.Forms;
+using NeptunoSql.BusinessLayer.Entities;
+using NeptunoSql.ServiceLayer.Servicios;
+using NeptunoSql.ServiceLayer.Servicios.Facades;
 using NeptunoSql.Windows.Helpers.Enum;
 
 namespace NeptunoSql.Windows.Helpers
@@ -30,6 +35,46 @@ namespace NeptunoSql.Windows.Helpers
         {
             return MessageBox.Show(mensaje, "Confirmar operación", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
+        }
+
+        public static void CargarComboMarcas(ref ComboBox cbo)
+        {
+            IServicioMarcas servicioMarcas=new ServicioMarcas();
+            cbo.DataSource = null;
+            List<Marca> listaMarcas = servicioMarcas.GetLista();
+            var defaultMarca = new Marca() { MarcaId = 0, NombreMarca = "[Seleccione Marca]" };
+            listaMarcas.Insert(0, defaultMarca);
+            cbo.DataSource = listaMarcas;
+            cbo.DisplayMember = "NombreMarca";
+            cbo.ValueMember = "MarcaId";
+            cbo.SelectedIndex = 0;
+        }
+
+        public static void CargarComboMedidas(ref ComboBox cbo)
+        {
+            IServicioMedidas servicioMedidas=new ServicioMedidas();
+            cbo.DataSource = null;
+            List<Medida> lista = servicioMedidas.GetLista();
+            var defaultMedida = new Medida {MedidaId = 0, Abreviatura = "[Seleccione]"};
+            lista.Insert(0,defaultMedida);
+            cbo.DataSource = lista;
+            cbo.DisplayMember = "Abreviatura";
+            cbo.ValueMember = "MedidaId";
+            cbo.SelectedIndex = 0;
+        }
+
+        public static void CargarComboCategorias(ref ComboBox cbo)
+        {
+            IServicioCategorias servicioCategorias=new ServicioCategorias();
+            cbo.DataSource = null;
+            List<Categoria> lista = servicioCategorias.GetLista();
+            var defaultCategoria = new Categoria { CategoriaId = 0, NombreCategoria = "[Seleccione Categoría]" };
+            lista.Insert(0, defaultCategoria);
+            cbo.DataSource = lista;
+            cbo.DisplayMember = "NombreCategoria";
+            cbo.ValueMember = "CategoriaId";
+            cbo.SelectedIndex = 0;
+
         }
 
     }

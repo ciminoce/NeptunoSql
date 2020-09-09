@@ -15,6 +15,11 @@ namespace NeptunoSql.Windows
             InitializeComponent();
             frm = frmMedidas;
         }
+        public FrmMedidasAE()
+        {
+            InitializeComponent();
+            
+        }
 
         private bool _esEdicion = false;
         private FrmMedidas frm;
@@ -80,7 +85,11 @@ namespace NeptunoSql.Windows
                         try
                         {
                             _servicio.Guardar(medida);
-                            frm.AgregarFila(medida);
+                            if (frm!=null)
+                            {
+                                frm.AgregarFila(medida);
+                                
+                            }
                             Helper.MensajeBox("Registro Guardado", Tipo.Success);
                             DialogResult dr = MessageBox.Show("¿Desea dar de alta otro registro?", "Confirmar",
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);

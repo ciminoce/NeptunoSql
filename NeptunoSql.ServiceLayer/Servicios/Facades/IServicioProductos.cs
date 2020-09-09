@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using NeptunoSql.BusinessLayer.Entities;
 
-namespace NeptunoSql.DataLayer.Repositorios.Facades
+namespace NeptunoSql.ServiceLayer.Servicios.Facades
 {
-    public interface IRepositorioProductos
+    public interface IServicioProductos
     {
         Producto GetProductoPorId(int id);
         List<Producto> GetLista();
