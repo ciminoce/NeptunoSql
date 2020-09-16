@@ -53,6 +53,12 @@ namespace NeptunoSql.Windows
             return r;
         }
 
+        public void AgregarFila(Producto producto)
+        {
+            DataGridViewRow r = ConstruirFila();
+            SetearFila(r,producto);
+            AgregarFila(r);
+        }
         private void FrmProductos_Load(object sender, System.EventArgs e)
         {
             try
@@ -74,8 +80,39 @@ namespace NeptunoSql.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            FrmProductosAE frm = new FrmProductosAE() {Text = "Agregar Producto"};
+            FrmProductosAE frm = new FrmProductosAE(this) {Text = "Agregar Producto"};
             DialogResult dr = frm.ShowDialog(this);
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewDatos.SelectedRows.Count==0)
+            {
+                return;
+            }
+
+            DataGridViewRow r = DataGridViewDatos.SelectedRows[0];
+            Producto p = (Producto) r.Tag;
+            p = _servicio.GetProductoPorId(p.ProductoId);
+            FrmProductosAE frm=new FrmProductosAE();
+            frm.Text = "Editar un Producto";
+            frm.SetProducto(p);
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr==DialogResult.OK)
+            {
+                try
+                {
+                    p = frm.GetProducto();
+                    _servicio.Guardar(p);
+                    SetearFila(r,p);
+                    Helper.MensajeBox("Registro modificado", Tipo.Success);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
+            }
         }
     }
 }

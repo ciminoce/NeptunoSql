@@ -21,9 +21,53 @@ namespace NeptunoSql.DataLayer.Repositorios
             _repositorioMedidas = repositorioMedidas;
         }
 
+        public RepositorioProductos(SqlConnection connection)
+        {
+            _connection = connection;
+        }
+
         public Producto GetProductoPorId(int id)
         {
-            throw new System.NotImplementedException();
+            Producto p = null;
+            try
+            {
+                string cadenaComando =
+                    "SELECT ProductoId, Descripcion, MarcaId, CategoriaId, PrecioUnitario, Stock, CodigoBarra, "+
+                    " MedidaId, Imagen, Suspendido FROM Productos WHERE ProductoId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _connection);
+                comando.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = comando.ExecuteReader();
+                if(reader.HasRows)
+                {
+                    reader.Read();
+                    p = ConstruirProductoTotal(reader);
+                }
+                reader.Close();
+                return p;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        private Producto ConstruirProductoTotal(SqlDataReader reader)
+        {
+            Producto producto = new Producto();
+            producto.ProductoId = reader.GetInt32(0);
+            producto.Descripcion = reader.GetString(1);
+            producto.Marca = _repositorioMarcas.GetMarcaPorId(reader.GetInt32(2));
+            producto.Categoria = _repositorioCategorias.GetCategoriaPorId(reader.GetInt32(3));
+            producto.PrecioUnitario = reader.GetDecimal(4);
+            producto.Stock = reader.GetDecimal(5);
+            producto.CodigoBarra =reader[6]!=DBNull.Value?reader.GetString(6):null;
+            producto.Medida = _repositorioMedidas.GetMedidaPorId(reader.GetInt32(7));
+            producto.Imagen =reader[8]!=DBNull.Value?reader.GetString(8):null;
+            producto.Suspendido = reader.GetBoolean(9);
+            return producto;
+
         }
 
         public List<Producto> GetLista()
@@ -67,7 +111,35 @@ namespace NeptunoSql.DataLayer.Repositorios
 
         public void Guardar(Producto producto)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                string cadenaComando = "INSERT INTO Productos (Descripcion, MarcaId, CategoriaId, PrecioUnitario, " +
+                                       "CodigoBarra, MedidaId, Imagen, Suspendido) VALUES (@desc, @marca, @cate, " +
+                                       "@precio, @cod, @medida, @imagen, @susp)";
+                var comando=new SqlCommand(cadenaComando,_connection);
+                comando.Parameters.AddWithValue("@desc", producto.Descripcion);
+                comando.Parameters.AddWithValue("@marca", producto.Marca.MarcaId);
+                comando.Parameters.AddWithValue("@cate", producto.Categoria.CategoriaId);
+                comando.Parameters.AddWithValue("@precio", producto.PrecioUnitario);
+                comando.Parameters.AddWithValue("@cod", producto.CodigoBarra);
+                comando.Parameters.AddWithValue("@medida", producto.Medida.MedidaId);
+                comando.Parameters.AddWithValue("@imagen", producto.Imagen);
+                comando.Parameters.AddWithValue("@susp", producto.Suspendido);
+                comando.ExecuteNonQuery();
+                cadenaComando = "SELECT @@IDENTITY";
+                comando=new SqlCommand(cadenaComando,_connection);
+                int id = (int) (decimal) comando.ExecuteScalar();
+                producto.ProductoId = id;
+
+
+
+
+            }
+            catch (Exception e)
+            {
+                
+                throw new Exception(e.Message);
+            }
         }
 
         public void Borrar(int id)

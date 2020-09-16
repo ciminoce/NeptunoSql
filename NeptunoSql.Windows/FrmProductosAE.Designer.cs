@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.chkSuspendido = new System.Windows.Forms.CheckBox();
-            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
+            this.CheckBoxSuspendido = new System.Windows.Forms.CheckBox();
+            this.TextBoxPrecioVenta = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.ComboBoxMarcas = new System.Windows.Forms.ComboBox();
             this.ComboBoxCategorias = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCodigoDeBarras = new System.Windows.Forms.TextBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.TextBoxCodigoDeBarras = new System.Windows.Forms.TextBox();
+            this.TextBoxDescripcion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,24 +54,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.picProducto)).BeginInit();
             this.SuspendLayout();
             // 
-            // chkSuspendido
+            // CheckBoxSuspendido
             // 
-            this.chkSuspendido.AutoSize = true;
-            this.chkSuspendido.Location = new System.Drawing.Point(484, 288);
-            this.chkSuspendido.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSuspendido.Name = "chkSuspendido";
-            this.chkSuspendido.Size = new System.Drawing.Size(100, 20);
-            this.chkSuspendido.TabIndex = 94;
-            this.chkSuspendido.Text = "Suspendido";
-            this.chkSuspendido.UseVisualStyleBackColor = true;
+            this.CheckBoxSuspendido.AutoSize = true;
+            this.CheckBoxSuspendido.Location = new System.Drawing.Point(484, 288);
+            this.CheckBoxSuspendido.Margin = new System.Windows.Forms.Padding(4);
+            this.CheckBoxSuspendido.Name = "CheckBoxSuspendido";
+            this.CheckBoxSuspendido.Size = new System.Drawing.Size(100, 20);
+            this.CheckBoxSuspendido.TabIndex = 94;
+            this.CheckBoxSuspendido.Text = "Suspendido";
+            this.CheckBoxSuspendido.UseVisualStyleBackColor = true;
             // 
-            // txtPrecioVenta
+            // TextBoxPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(146, 285);
-            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(132, 22);
-            this.txtPrecioVenta.TabIndex = 1;
+            this.TextBoxPrecioVenta.Location = new System.Drawing.Point(146, 285);
+            this.TextBoxPrecioVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxPrecioVenta.Name = "TextBoxPrecioVenta";
+            this.TextBoxPrecioVenta.Size = new System.Drawing.Size(132, 22);
+            this.TextBoxPrecioVenta.TabIndex = 1;
             // 
             // label8
             // 
@@ -113,24 +113,24 @@
             this.label3.TabIndex = 85;
             this.label3.Text = "Marca:";
             // 
-            // txtCodigoDeBarras
+            // TextBoxCodigoDeBarras
             // 
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(146, 243);
-            this.txtCodigoDeBarras.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigoDeBarras.MaxLength = 50;
-            this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
-            this.txtCodigoDeBarras.Size = new System.Drawing.Size(447, 22);
-            this.txtCodigoDeBarras.TabIndex = 92;
+            this.TextBoxCodigoDeBarras.Location = new System.Drawing.Point(146, 243);
+            this.TextBoxCodigoDeBarras.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxCodigoDeBarras.MaxLength = 20;
+            this.TextBoxCodigoDeBarras.Name = "TextBoxCodigoDeBarras";
+            this.TextBoxCodigoDeBarras.Size = new System.Drawing.Size(447, 22);
+            this.TextBoxCodigoDeBarras.TabIndex = 92;
             // 
-            // txtDescripcion
+            // TextBoxDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(146, 137);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescripcion.MaxLength = 100;
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(544, 83);
-            this.txtDescripcion.TabIndex = 82;
+            this.TextBoxDescripcion.Location = new System.Drawing.Point(146, 137);
+            this.TextBoxDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxDescripcion.MaxLength = 150;
+            this.TextBoxDescripcion.Multiline = true;
+            this.TextBoxDescripcion.Name = "TextBoxDescripcion";
+            this.TextBoxDescripcion.Size = new System.Drawing.Size(544, 83);
+            this.TextBoxDescripcion.TabIndex = 82;
             // 
             // label5
             // 
@@ -210,6 +210,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnBuscarImagen
             // 
@@ -222,6 +223,7 @@
             this.btnBuscarImagen.Text = "Buscar Imagen";
             this.btnBuscarImagen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnBuscarImagen.UseVisualStyleBackColor = true;
+            this.btnBuscarImagen.Click += new System.EventHandler(this.btnBuscarImagen_Click);
             // 
             // picProducto
             // 
@@ -279,7 +281,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 501);
             this.ControlBox = false;
-            this.Controls.Add(this.txtPrecioVenta);
+            this.Controls.Add(this.TextBoxPrecioVenta);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -288,14 +290,14 @@
             this.Controls.Add(this.btnAgregarMedida);
             this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.btnAgregarCategoria);
-            this.Controls.Add(this.chkSuspendido);
+            this.Controls.Add(this.CheckBoxSuspendido);
             this.Controls.Add(this.ComboBoxMedidas);
             this.Controls.Add(this.ComboBoxMarcas);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ComboBoxCategorias);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtCodigoDeBarras);
-            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.TextBoxCodigoDeBarras);
+            this.Controls.Add(this.TextBoxDescripcion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -320,14 +322,14 @@
         private System.Windows.Forms.PictureBox picProducto;
         private System.Windows.Forms.Button btnAgregarMarca;
         private System.Windows.Forms.Button btnAgregarCategoria;
-        private System.Windows.Forms.CheckBox chkSuspendido;
-        private System.Windows.Forms.TextBox txtPrecioVenta;
+        private System.Windows.Forms.CheckBox CheckBoxSuspendido;
+        private System.Windows.Forms.TextBox TextBoxPrecioVenta;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox ComboBoxMarcas;
         private System.Windows.Forms.ComboBox ComboBoxCategorias;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCodigoDeBarras;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox TextBoxCodigoDeBarras;
+        private System.Windows.Forms.TextBox TextBoxDescripcion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;

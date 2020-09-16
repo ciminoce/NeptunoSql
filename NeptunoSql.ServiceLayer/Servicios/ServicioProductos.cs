@@ -16,7 +16,16 @@ namespace NeptunoSql.ServiceLayer.Servicios
         private ConexionBd _conexion;
         public Producto GetProductoPorId(int id)
         {
-            throw new System.NotImplementedException();
+            _conexion = new ConexionBd();
+            _repositorioMarcas = new RepositorioMarcas(_conexion.AbrirConexion());
+            _repositorioCategorias = new RepositorioCategorias(_conexion.AbrirConexion());
+            _repositorioMedidas = new RepositorioMedidas(_conexion.AbrirConexion());
+            _repositorioProductos = new RepositorioProductos(_conexion.AbrirConexion(), _repositorioMarcas,
+                _repositorioCategorias, _repositorioMedidas);
+            var p = _repositorioProductos.GetProductoPorId(id);
+            _conexion.CerrarConexion();
+            return p;
+
         }
 
         public List<Producto> GetLista()
@@ -35,7 +44,10 @@ namespace NeptunoSql.ServiceLayer.Servicios
 
         public void Guardar(Producto producto)
         {
-            throw new System.NotImplementedException();
+            _conexion=new ConexionBd();
+            _repositorioProductos=new RepositorioProductos(_conexion.AbrirConexion());
+            _repositorioProductos.Guardar(producto);
+            _conexion.CerrarConexion();
         }
 
         public void Borrar(int id)
