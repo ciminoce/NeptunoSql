@@ -121,7 +121,7 @@ namespace NeptunoSql.Windows
                 DataGridViewRow r = DataGridViewDatos.SelectedRows[0];
                 Medida medida = (Medida)r.Tag;
                 Medida medidaAux =(Medida) medida.Clone();
-                FrmMedidasAE frm = new FrmMedidasAE(this);
+                FrmMedidasAE frm = new FrmMedidasAE();
                 frm.Text = "Editar Medida";
                 frm.SetMedida(medida);
                 DialogResult dr = frm.ShowDialog(this);

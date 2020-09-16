@@ -57,7 +57,7 @@
             // chkSuspendido
             // 
             this.chkSuspendido.AutoSize = true;
-            this.chkSuspendido.Location = new System.Drawing.Point(505, 305);
+            this.chkSuspendido.Location = new System.Drawing.Point(484, 288);
             this.chkSuspendido.Margin = new System.Windows.Forms.Padding(4);
             this.chkSuspendido.Name = "chkSuspendido";
             this.chkSuspendido.Size = new System.Drawing.Size(100, 20);
@@ -67,7 +67,7 @@
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(167, 302);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(146, 285);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(132, 22);
@@ -76,7 +76,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(36, 306);
+            this.label8.Location = new System.Drawing.Point(15, 289);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 16);
@@ -87,7 +87,7 @@
             // 
             this.ComboBoxMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxMarcas.FormattingEnabled = true;
-            this.ComboBoxMarcas.Location = new System.Drawing.Point(167, 105);
+            this.ComboBoxMarcas.Location = new System.Drawing.Point(146, 88);
             this.ComboBoxMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBoxMarcas.Name = "ComboBoxMarcas";
             this.ComboBoxMarcas.Size = new System.Drawing.Size(447, 24);
@@ -97,7 +97,7 @@
             // 
             this.ComboBoxCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCategorias.FormattingEnabled = true;
-            this.ComboBoxCategorias.Location = new System.Drawing.Point(167, 42);
+            this.ComboBoxCategorias.Location = new System.Drawing.Point(146, 25);
             this.ComboBoxCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBoxCategorias.Name = "ComboBoxCategorias";
             this.ComboBoxCategorias.Size = new System.Drawing.Size(447, 24);
@@ -106,7 +106,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 108);
+            this.label3.Location = new System.Drawing.Point(15, 91);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 16);
@@ -115,7 +115,7 @@
             // 
             // txtCodigoDeBarras
             // 
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(167, 260);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(146, 243);
             this.txtCodigoDeBarras.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoDeBarras.MaxLength = 50;
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
@@ -124,7 +124,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(167, 154);
+            this.txtDescripcion.Location = new System.Drawing.Point(146, 137);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.MaxLength = 100;
             this.txtDescripcion.Multiline = true;
@@ -135,7 +135,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 263);
+            this.label5.Location = new System.Drawing.Point(15, 246);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 16);
@@ -145,7 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 154);
+            this.label4.Location = new System.Drawing.Point(15, 137);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 16);
@@ -155,7 +155,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 46);
+            this.label2.Location = new System.Drawing.Point(15, 29);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 16);
@@ -165,7 +165,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 359);
+            this.label1.Location = new System.Drawing.Point(15, 342);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
@@ -176,7 +176,7 @@
             // 
             this.ComboBoxMedidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxMedidas.FormattingEnabled = true;
-            this.ComboBoxMedidas.Location = new System.Drawing.Point(167, 356);
+            this.ComboBoxMedidas.Location = new System.Drawing.Point(146, 339);
             this.ComboBoxMedidas.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBoxMedidas.Name = "ComboBoxMedidas";
             this.ComboBoxMedidas.Size = new System.Drawing.Size(447, 24);
@@ -190,7 +190,7 @@
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::NeptunoSql.Windows.Properties.Resources.Cancelar;
-            this.btnCancelar.Location = new System.Drawing.Point(767, 546);
+            this.btnCancelar.Location = new System.Drawing.Point(759, 425);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(135, 63);
@@ -202,7 +202,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Image = global::NeptunoSql.Windows.Properties.Resources.Aceptar;
-            this.btnGuardar.Location = new System.Drawing.Point(353, 546);
+            this.btnGuardar.Location = new System.Drawing.Point(347, 425);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(135, 63);
@@ -214,7 +214,7 @@
             // btnBuscarImagen
             // 
             this.btnBuscarImagen.Image = global::NeptunoSql.Windows.Properties.Resources.BuscarAE;
-            this.btnBuscarImagen.Location = new System.Drawing.Point(909, 383);
+            this.btnBuscarImagen.Location = new System.Drawing.Point(842, 329);
             this.btnBuscarImagen.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarImagen.Name = "btnBuscarImagen";
             this.btnBuscarImagen.Size = new System.Drawing.Size(201, 73);
@@ -226,7 +226,7 @@
             // picProducto
             // 
             this.picProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picProducto.Location = new System.Drawing.Point(785, 25);
+            this.picProducto.Location = new System.Drawing.Point(719, 8);
             this.picProducto.Margin = new System.Windows.Forms.Padding(4);
             this.picProducto.Name = "picProducto";
             this.picProducto.Size = new System.Drawing.Size(423, 313);
@@ -237,7 +237,7 @@
             // btnAgregarMedida
             // 
             this.btnAgregarMedida.Image = global::NeptunoSql.Windows.Properties.Resources.AgregarAE;
-            this.btnAgregarMedida.Location = new System.Drawing.Point(637, 338);
+            this.btnAgregarMedida.Location = new System.Drawing.Point(616, 321);
             this.btnAgregarMedida.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarMedida.Name = "btnAgregarMedida";
             this.btnAgregarMedida.Size = new System.Drawing.Size(75, 58);
@@ -250,7 +250,7 @@
             // btnAgregarMarca
             // 
             this.btnAgregarMarca.Image = global::NeptunoSql.Windows.Properties.Resources.AgregarAE;
-            this.btnAgregarMarca.Location = new System.Drawing.Point(637, 87);
+            this.btnAgregarMarca.Location = new System.Drawing.Point(616, 70);
             this.btnAgregarMarca.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(75, 58);
@@ -263,7 +263,7 @@
             // btnAgregarCategoria
             // 
             this.btnAgregarCategoria.Image = global::NeptunoSql.Windows.Properties.Resources.AgregarAE;
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(637, 25);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(616, 8);
             this.btnAgregarCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(75, 58);
@@ -277,7 +277,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 626);
+            this.ClientSize = new System.Drawing.Size(1152, 501);
             this.ControlBox = false;
             this.Controls.Add(this.txtPrecioVenta);
             this.Controls.Add(this.label8);
@@ -302,8 +302,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1265, 665);
-            this.MinimumSize = new System.Drawing.Size(1265, 665);
+            this.MaximumSize = new System.Drawing.Size(1168, 540);
+            this.MinimumSize = new System.Drawing.Size(1168, 540);
             this.Name = "FrmProductosAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProductosAE";

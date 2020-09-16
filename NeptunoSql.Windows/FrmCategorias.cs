@@ -27,6 +27,12 @@ namespace NeptunoSql.Windows
                 AgregarFila(r);
             }
         }
+        public void AgregarFila(Categoria categoria)
+        {
+            DataGridViewRow r = ConstruirFila();
+            SetearFila(r, categoria);
+            AgregarFila(r);
+        }
 
         private void AgregarFila(DataGridViewRow r)
         {
@@ -66,29 +72,6 @@ namespace NeptunoSql.Windows
             FrmCategoriasAE frm = new FrmCategoriasAE();
             frm.Text = "Nueva Categoria";
             DialogResult dr = frm.ShowDialog(this);
-            if (dr == DialogResult.OK)
-            {
-                try
-                {
-                    Categoria categoria = frm.GetCategoria();
-                    if (!_servicio.Existe(categoria))
-                    {
-                        _servicio.Guardar(categoria);
-                        DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, categoria);
-                        AgregarFila(r);
-                        Helper.MensajeBox("Registro Agregado", Tipo.Success);
-                    }
-                    else
-                    {
-                        Helper.MensajeBox("Categoria repetida", Tipo.Error);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    Helper.MensajeBox(exception.Message, Tipo.Error);
-                }
-            }
 
         }
 

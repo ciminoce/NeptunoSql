@@ -49,6 +49,13 @@ namespace NeptunoSql.Windows
             return r;
         }
 
+        public void AgregarFila(Marca marca)
+        {
+            DataGridViewRow r = ConstruirFila();
+            SetearFila(r,marca);
+            AgregarFila(r);
+
+        }
         private void tsbCerrar_Click(object sender, System.EventArgs e)
         {
             Close();
