@@ -1,4 +1,6 @@
-﻿namespace NeptunoSql.BusinessLayer.Entities
+﻿using System.Security.Cryptography;
+
+namespace NeptunoSql.BusinessLayer.Entities
 {
     public class Producto
     {
@@ -12,5 +14,10 @@
         public Medida Medida { get; set; }
         public string Imagen { get; set; }
         public bool Suspendido { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Marca.NombreMarca} {Descripcion}";
+        }
     }
 }
