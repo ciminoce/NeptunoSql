@@ -12,6 +12,7 @@ namespace NeptunoSql.DataLayer.Repositorios
         private readonly IRepositorioMarcas _repositorioMarcas;
         private readonly IRepositorioCategorias _repositorioCategorias;
         private readonly IRepositorioMedidas _repositorioMedidas;
+        private readonly SqlTransaction _tran;
 
         public RepositorioProductos(SqlConnection connection, IRepositorioMarcas repositorioMarcas, IRepositorioCategorias repositorioCategorias, IRepositorioMedidas repositorioMedidas)
         {
@@ -24,6 +25,12 @@ namespace NeptunoSql.DataLayer.Repositorios
         public RepositorioProductos(SqlConnection connection)
         {
             _connection = connection;
+        }
+
+        public RepositorioProductos(SqlConnection cn, SqlTransaction tran)
+        {
+            _connection = cn;
+            _tran = tran;
         }
 
         public Producto GetProductoPorId(int id)
@@ -155,6 +162,23 @@ namespace NeptunoSql.DataLayer.Repositorios
         public bool EstaRelacionado(Producto producto)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void ActualizarStock(Producto producto, decimal cantidad)
+        {
+            try
+            {
+                string cadenaComando = "UPDATE Productos SET Stock=Stock+@cant WHERE ProductoId=@id";
+                var comando=new SqlCommand(cadenaComando,_connection,_tran);
+                comando.Parameters.AddWithValue("@cant", cantidad);
+                comando.Parameters.AddWithValue("@id", producto.ProductoId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                
+                throw new Exception("Error al actualizar el stock de un producto");
+            }
         }
     }
 }

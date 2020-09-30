@@ -42,6 +42,10 @@
             this.ReferenciaTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.StockInProductosDataGridView = new System.Windows.Forms.DataGridView();
+            this.cmnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.HistoricoTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
@@ -66,10 +70,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cmnMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.StockTabControl.SuspendLayout();
             this.StockInTabPage.SuspendLayout();
@@ -248,6 +248,37 @@
             this.StockInProductosDataGridView.Size = new System.Drawing.Size(1150, 447);
             this.StockInProductosDataGridView.TabIndex = 0;
             this.StockInProductosDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockInProductosDataGridView_CellClick);
+            // 
+            // cmnMarca
+            // 
+            this.cmnMarca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnMarca.HeaderText = "Marca";
+            this.cmnMarca.Name = "cmnMarca";
+            this.cmnMarca.ReadOnly = true;
+            // 
+            // cmnDescripcion
+            // 
+            this.cmnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnDescripcion.HeaderText = "Descripción";
+            this.cmnDescripcion.Name = "cmnDescripcion";
+            this.cmnDescripcion.ReadOnly = true;
+            // 
+            // cmnCantidad
+            // 
+            this.cmnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cmnCantidad.HeaderText = "Cantidad";
+            this.cmnCantidad.Name = "cmnCantidad";
+            this.cmnCantidad.ReadOnly = true;
+            this.cmnCantidad.Width = 74;
+            // 
+            // cmnBorrar
+            // 
+            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cmnBorrar.HeaderText = "Borrar";
+            this.cmnBorrar.Image = global::NeptunoSql.Windows.Properties.Resources.trash_15px;
+            this.cmnBorrar.Name = "cmnBorrar";
+            this.cmnBorrar.ReadOnly = true;
+            this.cmnBorrar.Width = 41;
             // 
             // HistoricoTabPage
             // 
@@ -499,37 +530,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(767, 629);
             this.dataGridView2.TabIndex = 0;
             // 
-            // cmnMarca
-            // 
-            this.cmnMarca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnMarca.HeaderText = "Marca";
-            this.cmnMarca.Name = "cmnMarca";
-            this.cmnMarca.ReadOnly = true;
-            // 
-            // cmnDescripcion
-            // 
-            this.cmnDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnDescripcion.HeaderText = "Descripción";
-            this.cmnDescripcion.Name = "cmnDescripcion";
-            this.cmnDescripcion.ReadOnly = true;
-            // 
-            // cmnCantidad
-            // 
-            this.cmnCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cmnCantidad.HeaderText = "Cantidad";
-            this.cmnCantidad.Name = "cmnCantidad";
-            this.cmnCantidad.ReadOnly = true;
-            this.cmnCantidad.Width = 74;
-            // 
-            // cmnBorrar
-            // 
-            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cmnBorrar.HeaderText = "Borrar";
-            this.cmnBorrar.Image = global::NeptunoSql.Windows.Properties.Resources.trash_15px;
-            this.cmnBorrar.Name = "cmnBorrar";
-            this.cmnBorrar.ReadOnly = true;
-            this.cmnBorrar.Width = 41;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -542,6 +542,7 @@
             this.Controls.Add(this.StockTabControl);
             this.Name = "FrmIngresos";
             this.Text = "FrmStockIn";
+            this.Load += new System.EventHandler(this.FrmIngresos_Load);
             this.StockTabControl.ResumeLayout(false);
             this.StockInTabPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);

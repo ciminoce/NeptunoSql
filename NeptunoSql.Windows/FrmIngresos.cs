@@ -4,7 +4,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using NeptunoSql.BusinessLayer.Entities;
+using NeptunoSql.ServiceLayer.Servicios;
+using NeptunoSql.ServiceLayer.Servicios.Facades;
 using NeptunoSql.Windows.Helpers;
+using NeptunoSql.Windows.Helpers.Enum;
 
 namespace NeptunoSql.Windows
 {
@@ -76,12 +79,57 @@ namespace NeptunoSql.Windows
 
         }
 
+        private IServicioIngresos _servicio;
         private void GuardarButton_Click(object sender, System.EventArgs e)
         {
             if (ValidarDatos())
             {
-                
+                Ingreso ingreso=new Ingreso();
+                ingreso.Referencia = ReferenciaTextBox.Text;
+                ingreso.Empleado = EmpleadoTextBox.Text;
+                ingreso.Fecha = FechaDateTimePicker.Value;
+                ingreso.DetalleIngresos = ConstruirListaDetalleIngresos();
+                try
+                {
+                    _servicio.Guardar(ingreso);
+                    Helper.MensajeBox("Registro guardado", Tipo.Success);
+                    InicializarControles();
+
+                }
+                catch (Exception exception)
+                {
+                    Helper.MensajeBox(exception.Message, Tipo.Error);
+                }
+
             }
+        }
+
+        private void InicializarControles()
+        {
+            ReferenciaTextBox.Clear();
+            FechaDateTimePicker.Value = DateTime.Today;
+            EmpleadoTextBox.Clear();
+            StockInProductosDataGridView.Rows.Clear();
+            ReferenciaTextBox.Focus();
+            _listaProducto.Clear();
+        }
+
+        private List<DetalleIngreso> ConstruirListaDetalleIngresos()
+        {
+            List<DetalleIngreso> lista=new List<DetalleIngreso>();
+            int contadorFilas = -1;
+            foreach (var producto in _listaProducto)
+            {
+                contadorFilas++;
+                DetalleIngreso detalle = new DetalleIngreso
+                {
+                    Producto = producto,
+                    Cantidad = (decimal) (double) StockInProductosDataGridView.Rows[contadorFilas].Cells[2].Value
+                };
+                lista.Add(detalle);
+            }
+
+            return lista;
         }
 
         private bool ValidarDatos()
@@ -126,6 +174,11 @@ namespace NeptunoSql.Windows
                 }
             }
             return valido;
+        }
+
+        private void FrmIngresos_Load(object sender, EventArgs e)
+        {
+            _servicio=new ServicioIngresos();
         }
     }
 }
