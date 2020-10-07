@@ -12,5 +12,6 @@ namespace NeptunoSql.ServiceLayer.Servicios.Facades
         bool Existe(Producto producto);
         bool EstaRelacionado(Producto producto);
 
+        Producto GetProductoPorCodigoDeBarras(string codigo);
     }
 }

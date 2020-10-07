@@ -180,5 +180,31 @@ namespace NeptunoSql.DataLayer.Repositorios
                 throw new Exception("Error al actualizar el stock de un producto");
             }
         }
+
+        public Producto GetProductoPorCodigoDeBarras(string codigo)
+        {
+            Producto p = null;
+            try
+            {
+                string cadenaComando =
+                    "SELECT ProductoId, Descripcion, MarcaId, CategoriaId, PrecioUnitario, Stock, CodigoBarra, " +
+                    " MedidaId, Imagen, Suspendido FROM Productos WHERE CodigoBarra=@barra";
+                SqlCommand comando = new SqlCommand(cadenaComando, _connection);
+                comando.Parameters.AddWithValue("@barra", codigo);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    p = ConstruirProductoTotal(reader);
+                }
+                reader.Close();
+                return p;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

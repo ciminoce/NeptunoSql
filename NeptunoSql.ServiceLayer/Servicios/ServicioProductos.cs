@@ -64,5 +64,18 @@ namespace NeptunoSql.ServiceLayer.Servicios
         {
             throw new System.NotImplementedException();
         }
+
+        public Producto GetProductoPorCodigoDeBarras(string codigo)
+        {
+            _conexion = new ConexionBd();
+            _repositorioMarcas = new RepositorioMarcas(_conexion.AbrirConexion());
+            _repositorioCategorias = new RepositorioCategorias(_conexion.AbrirConexion());
+            _repositorioMedidas = new RepositorioMedidas(_conexion.AbrirConexion());
+            _repositorioProductos = new RepositorioProductos(_conexion.AbrirConexion(), _repositorioMarcas,
+                _repositorioCategorias, _repositorioMedidas);
+            var p = _repositorioProductos.GetProductoPorCodigoDeBarras(codigo);
+            _conexion.CerrarConexion();
+            return p;
+        }
     }
 }

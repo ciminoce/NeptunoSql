@@ -36,6 +36,7 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,12 @@
     </Compile>
     <Compile Include="FrmBuscarProducto.Designer.cs">
       <DependentUpon>FrmBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarProductoVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarProductoVenta.Designer.cs">
+      <DependentUpon>FrmBuscarProductoVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCategorias.cs">
       <SubType>Form</SubType>
@@ -113,12 +120,21 @@
     <Compile Include="FrmIngresos.Designer.cs">
       <DependentUpon>FrmIngresos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVentas.Designer.cs">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Enum\Tipo.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmBuscarProducto.resx">
       <DependentUpon>FrmBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarProductoVenta.resx">
+      <DependentUpon>FrmBuscarProductoVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCategorias.resx">
       <DependentUpon>FrmCategorias.cs</DependentUpon>
@@ -149,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIngresos.resx">
       <DependentUpon>FrmIngresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVentas.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -224,6 +243,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ok_15px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_cart_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return_purchase_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buying_15px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\get_a_discount_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receive_cash_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_window_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkout_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_shopping_cart_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return_purchase_40px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buying_40px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

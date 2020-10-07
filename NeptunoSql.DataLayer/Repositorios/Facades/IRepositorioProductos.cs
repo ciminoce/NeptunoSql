@@ -13,5 +13,6 @@ namespace NeptunoSql.DataLayer.Repositorios.Facades
         bool EstaRelacionado(Producto producto);
 
         void ActualizarStock(Producto producto, decimal cantidad);
+        Producto GetProductoPorCodigoDeBarras(string codigo);
     }
 }
