@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BuscarPorComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CerrarPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -107,10 +108,12 @@
             // 
             // BuscarTextBox
             // 
-            this.BuscarTextBox.Location = new System.Drawing.Point(120, 23);
+            this.BuscarTextBox.Enabled = false;
+            this.BuscarTextBox.Location = new System.Drawing.Point(390, 26);
             this.BuscarTextBox.Name = "BuscarTextBox";
-            this.BuscarTextBox.Size = new System.Drawing.Size(298, 20);
+            this.BuscarTextBox.Size = new System.Drawing.Size(223, 20);
             this.BuscarTextBox.TabIndex = 120;
+            this.BuscarTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BuscarTextBox_KeyPress);
             // 
             // dataGridViewImageColumn1
             // 
@@ -153,20 +156,37 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BuscarPorComboBox);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BuscarTextBox);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(441, 87);
+            this.groupBox1.Size = new System.Drawing.Size(889, 87);
             this.groupBox1.TabIndex = 123;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresar parte de la descripción";
+            // 
+            // BuscarPorComboBox
+            // 
+            this.BuscarPorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BuscarPorComboBox.FormattingEnabled = true;
+            this.BuscarPorComboBox.Items.AddRange(new object[] {
+            "Seleccione campo de búsqueda",
+            "Marca",
+            "Categoría",
+            "Descripción"});
+            this.BuscarPorComboBox.Location = new System.Drawing.Point(131, 26);
+            this.BuscarPorComboBox.Name = "BuscarPorComboBox";
+            this.BuscarPorComboBox.Size = new System.Drawing.Size(233, 21);
+            this.BuscarPorComboBox.TabIndex = 123;
+            this.BuscarPorComboBox.SelectedIndexChanged += new System.EventHandler(this.BuscarPorComboBox_SelectedIndexChanged);
             // 
             // FrmBuscarProductoVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1126, 574);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CerrarPictureBox);
@@ -200,5 +220,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnPrecioUnitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnStock;
         private System.Windows.Forms.DataGridViewImageColumn cmnComprar;
+        private System.Windows.Forms.ComboBox BuscarPorComboBox;
     }
 }

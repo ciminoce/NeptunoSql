@@ -14,5 +14,7 @@ namespace NeptunoSql.DataLayer.Repositorios.Facades
 
         void ActualizarStock(Producto producto, decimal cantidad);
         Producto GetProductoPorCodigoDeBarras(string codigo);
+        List<Producto> GetLista(int marcaId);
+        List<Producto> GetLista(string descripcion);
     }
 }

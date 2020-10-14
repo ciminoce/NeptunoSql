@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using NeptunoSql.BusinessLayer.Entities;
@@ -34,8 +35,9 @@ namespace NeptunoSql.Windows
             FinalizarVentaToolStripButton.Enabled = !b;
             BuscarToolStripButton.Enabled = !b;
             DescuentoToolStripButton.Enabled = !b;
-            PagarToolStripButton.Enabled = !b;
+            PagarToolStripButton.Enabled = b;
             CerrarToolStripButton.Enabled = b;
+            ConsultarToolStripButton.Enabled = b;
         }
 
         private void CerrarToolStripButton_Click(object sender, EventArgs e)
@@ -154,6 +156,7 @@ namespace NeptunoSql.Windows
             r.Cells[cmnProducto.Index].Value = producto.ToString();
             r.Cells[cmnPrecioUnitario.Index].Value = producto.PrecioUnitario;
             r.Cells[cmnCantidad.Index].Value = 1;
+            r.Cells[cmnDescuento.Index].Value = 0;
             r.Cells[cmnPrecioTotal.Index].Value = producto.PrecioUnitario;
 
             r.Tag = producto;
@@ -182,6 +185,82 @@ namespace NeptunoSql.Windows
             AgregarFila(r);
             r.Cells[cmnCantidad.Index].Value = cantidad;
             r.Cells[cmnPrecioTotal.Index].Value = cantidad * (decimal) r.Cells[cmnPrecioUnitario.Index].Value;
+            CalcularMostrarTotales();
+        }
+
+        private void CancelarToolStripButton_Click(object sender, EventArgs e)
+        {
+            CancelarVenta();
+        }
+
+        private void CancelarVenta()
+        {
+            InicializarGrilla();
+            InicializarTotales();
+            ManejarBarraHerramientas(true);
+            CodigoBarraTextBox.Enabled = false;
+
+        }
+
+        private void InicializarTotales()
+        {
+           TotalTextBox.Clear();
+           SubtotalTextBox.Clear();
+           DescuentosTextBox.Clear();
+           TotalLabel.Text = "0.00";
+            
+        }
+
+        private void InicializarGrilla()
+        {
+            VentasDataGridView.Rows.Clear();
+        }
+
+        private void FinalizarVentaToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (VentasDataGridView.Rows.Count==0)
+            {
+                return;
+            }
+
+            Venta venta = new Venta();
+            venta.Fecha=DateTime.Now;
+            venta.Subtotal = CalcularTotal();
+            venta.Descuentos = CalcularTotalDescuento();
+            venta.Total = venta.Subtotal - venta.Descuentos;
+            venta.DetalleVentas = CargarDetalleVenta();
+
+        }
+
+        private List<DetalleVenta> CargarDetalleVenta()
+        {
+            List<DetalleVenta> detalleVentas=new List<DetalleVenta>();
+            foreach (DataGridViewRow row in VentasDataGridView.Rows)
+            {
+                DetalleVenta detalleventa=new DetalleVenta();
+                detalleventa.Producto = (Producto) row.Tag;
+                detalleventa.PrecioUnitario =(decimal) row.Cells[cmnPrecioUnitario.Index].Value;
+                detalleventa.Cantidad = (decimal) row.Cells[cmnCantidad.Index].Value;
+                detalleventa.Descuento = (decimal) row.Cells[cmnDescuento.Index].Value;
+                detalleventa.Total = (decimal) row.Cells[cmnPrecioTotal.Index].Value;
+                
+                detalleVentas.Add(detalleventa);
+            }
+
+            return detalleVentas;
+        }
+
+
+        private decimal CalcularTotalDescuento()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow r in VentasDataGridView.Rows)
+            {
+                total += (decimal)r.Cells[cmnDescuento.Index].Value;
+            }
+
+            return total;
+
         }
     }
 }

@@ -13,5 +13,8 @@ namespace NeptunoSql.ServiceLayer.Servicios.Facades
         bool EstaRelacionado(Producto producto);
 
         Producto GetProductoPorCodigoDeBarras(string codigo);
+        List<Producto> GetLista(int marcaId);
+        List<Producto> GetLista(string descripcion);
+
     }
 }

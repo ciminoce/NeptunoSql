@@ -187,6 +187,7 @@
             this.CancelarToolStripButton.Text = "Cancelar";
             this.CancelarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CancelarToolStripButton.ToolTipText = "Cancelar toda la venta";
+            this.CancelarToolStripButton.Click += new System.EventHandler(this.CancelarToolStripButton_Click);
             // 
             // FinalizarVentaToolStripButton
             // 
@@ -198,6 +199,7 @@
             this.FinalizarVentaToolStripButton.Text = "Finalizar";
             this.FinalizarVentaToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.FinalizarVentaToolStripButton.ToolTipText = "Finalizar la Venta";
+            this.FinalizarVentaToolStripButton.Click += new System.EventHandler(this.FinalizarVentaToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -249,6 +251,7 @@
             // 
             // PagarToolStripButton
             // 
+            this.PagarToolStripButton.Enabled = false;
             this.PagarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.receive_cash_40px;
             this.PagarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.PagarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -277,6 +280,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel4.Controls.Add(this.CodigoBarraTextBox);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.pictureBox1);
@@ -417,12 +421,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.ControlBox = false;
             this.Controls.Add(this.PanelInferior);
             this.Controls.Add(this.BarraPrincipalToolStrip);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.PanelSuperiorDerecho);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVentas";

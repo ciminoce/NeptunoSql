@@ -206,5 +206,57 @@ namespace NeptunoSql.DataLayer.Repositorios
                 throw new Exception(e.Message);
             }
         }
+
+        public List<Producto> GetLista(int marcaId)
+        {
+            List<Producto> lista = new List<Producto>();
+            try
+            {
+                string cadenaComando =
+                    "SELECT ProductoId, Descripcion, MarcaId, CategoriaId, PrecioUnitario, Stock, Suspendido " +
+                    " FROM Productos WHERE MarcaId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _connection);
+                comando.Parameters.AddWithValue("@id", marcaId);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Producto producto = ConstruirProducto(reader);
+                    lista.Add(producto);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<Producto> GetLista(string descripcion)
+        {
+            List<Producto> lista = new List<Producto>();
+            try
+            {
+                string cadenaComando =
+                    "SELECT ProductoId, Descripcion, MarcaId, CategoriaId, PrecioUnitario, Stock, Suspendido " +
+                    " FROM Productos WHERE Descripcion LIKE @desc";
+                SqlCommand comando = new SqlCommand(cadenaComando, _connection);
+                comando.Parameters.AddWithValue("@desc", $"%{descripcion}%");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Producto producto = ConstruirProducto(reader);
+                    lista.Add(producto);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

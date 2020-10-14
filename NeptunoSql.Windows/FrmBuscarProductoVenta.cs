@@ -23,6 +23,8 @@ namespace NeptunoSql.Windows
             Close();
         }
         private readonly IServicioProductos _servicioProductos=new ServicioProductos();
+        private readonly IServicioMarcas _servicioMarcas=new ServicioMarcas();
+
         private void FrmBuscarProductoVenta_Load(object sender, EventArgs e)
         {
             CargarDatosEnGrilla();
@@ -32,6 +34,12 @@ namespace NeptunoSql.Windows
         private void CargarDatosEnGrilla()
         {
             lista = _servicioProductos.GetLista();
+            CargarGrilla();
+        }
+
+        private void CargarGrilla()
+        {
+            ProductosDataGridView.Rows.Clear();
             foreach (var producto in lista)
             {
                 DataGridViewRow r = Helper.ConstruirFila(ref ProductosDataGridView);
@@ -76,6 +84,51 @@ namespace NeptunoSql.Windows
                     return;
                 }
                 frm.AgregarProductoEnVenta(producto,cantidadVendida);
+            }
+        }
+
+        private void BuscarPorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BuscarPorComboBox.SelectedIndex==0)
+            {
+                return;
+            }
+
+            BuscarTextBox.Enabled = true;
+        }
+
+        private void BuscarTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==Convert.ToChar(Keys.Enter))
+            {
+                if (string.IsNullOrEmpty(BuscarTextBox.Text))
+                {
+                    return;
+                    
+                }
+
+                switch (BuscarPorComboBox.SelectedIndex)
+                {
+                    case 1://Busco por marca
+                        var marca = _servicioMarcas.GetMarca(BuscarTextBox.Text);
+                        if (marca == null)
+                        {
+                            return;
+                        }
+                        lista = _servicioProductos.GetLista(marca.MarcaId);
+                        CargarGrilla();
+                        break;
+                    case 2://Busco por categoría
+                        //TODO:Hacer la búsqueda por categoría
+                        break;
+                    case 3://Busco por descripcion
+                        lista = _servicioProductos.GetLista(BuscarTextBox.Text);
+                        CargarGrilla();
+                        break;
+
+
+
+                }
             }
         }
     }

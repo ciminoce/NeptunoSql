@@ -12,5 +12,6 @@ namespace NeptunoSql.ServiceLayer.Servicios.Facades
         bool Existe(Marca marca);
         bool EstaRelacionado(Marca marca);
 
+        Marca GetMarca(string nombreMarca);
     }
 }

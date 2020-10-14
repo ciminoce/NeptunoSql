@@ -77,5 +77,32 @@ namespace NeptunoSql.ServiceLayer.Servicios
             _conexion.CerrarConexion();
             return p;
         }
+
+        public List<Producto> GetLista(int marcaId)
+        {
+            _conexion = new ConexionBd();
+            _repositorioMarcas = new RepositorioMarcas(_conexion.AbrirConexion());
+            _repositorioCategorias = new RepositorioCategorias(_conexion.AbrirConexion());
+            _repositorioMedidas = new RepositorioMedidas(_conexion.AbrirConexion());
+            _repositorioProductos = new RepositorioProductos(_conexion.AbrirConexion(), _repositorioMarcas,
+                _repositorioCategorias, _repositorioMedidas);
+            var lista = _repositorioProductos.GetLista(marcaId);
+            _conexion.CerrarConexion();
+            return lista;
+
+        }
+
+        public List<Producto> GetLista(string descripcion)
+        {
+            _conexion = new ConexionBd();
+            _repositorioMarcas = new RepositorioMarcas(_conexion.AbrirConexion());
+            _repositorioCategorias = new RepositorioCategorias(_conexion.AbrirConexion());
+            _repositorioMedidas = new RepositorioMedidas(_conexion.AbrirConexion());
+            _repositorioProductos = new RepositorioProductos(_conexion.AbrirConexion(), _repositorioMarcas,
+                _repositorioCategorias, _repositorioMedidas);
+            var lista = _repositorioProductos.GetLista(descripcion);
+            _conexion.CerrarConexion();
+            return lista;
+        }
     }
 }
