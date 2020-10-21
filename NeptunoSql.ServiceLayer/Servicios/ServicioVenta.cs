@@ -34,34 +34,34 @@ namespace NeptunoSql.ServiceLayer.Servicios
                 _repositorioKardex = new RepositorioKardex(cn, tran);
 
                 _repositorioVentas.Guardar(venta);
-                foreach (var detalleIngreso in ingreso.DetalleIngresos)
+                foreach (var detalleVenta in venta.DetalleVentas)
                 {
-                    detalleIngreso.Ingreso = ingreso;
-                    Kardex kardex = _repositorioKardex.GetUltimoKardex(detalleIngreso.Producto);
+                    detalleVenta.Venta = venta;
+                    Kardex kardex = _repositorioKardex.GetUltimoKardex(detalleVenta.Producto);
                     if (kardex == null)
                     {
                         kardex = new Kardex();
-                        kardex.Producto = detalleIngreso.Producto;
-                        kardex.Fecha = ingreso.Fecha;
-                        kardex.Movimiento = $"Ingreso Nro {ingreso.IngresoId}";
-                        kardex.Entrada = detalleIngreso.Cantidad;
-                        kardex.Salida = 0;
-                        kardex.Saldo = detalleIngreso.Cantidad;
+                        kardex.Producto = detalleVenta.Producto;
+                        kardex.Fecha = venta.Fecha;
+                        kardex.Movimiento = $"Venta Nro {venta.VentaId}";
+                        kardex.Entrada = 0;
+                        kardex.Salida = detalleVenta.Cantidad;
+                        kardex.Saldo = detalleVenta.Cantidad;
                     }
                     else
                     {
-                        kardex.Fecha = ingreso.Fecha;
-                        kardex.Movimiento = $"Ingreso Nro {ingreso.IngresoId}";
-                        kardex.Entrada = detalleIngreso.Cantidad;
-                        kardex.Salida = 0;
-                        kardex.Saldo += detalleIngreso.Cantidad;
+                        kardex.Fecha = venta.Fecha;
+                        kardex.Movimiento = $"Venta Nro {venta.VentaId}";
+                        kardex.Entrada = 0;
+                        kardex.Salida = detalleVenta.Cantidad;
+                        kardex.Saldo -= detalleVenta.Cantidad;
 
                     }
                     _repositorioKardex.Guardar(kardex);
-                    detalleIngreso.Kardex = kardex;
-                    _repositorioDetalleIngresos.Guardar(detalleIngreso);
-                    _repositorioProductos.ActualizarStock(detalleIngreso.Producto,
-                        detalleIngreso.Cantidad);
+                    detalleVenta.Kardex = kardex;
+                    _repositorioDetalleVentas.Guardar(detalleVenta);
+                    _repositorioProductos.ActualizarStock(detalleVenta.Producto,
+                        -detalleVenta.Cantidad);
                 }
                 tran.Commit();
             }
@@ -70,6 +70,25 @@ namespace NeptunoSql.ServiceLayer.Servicios
                 tran.Rollback();
                 throw new Exception(e.Message);
             }
+        }
+
+        public decimal GetTotalVenta(int ventaId)
+        {
+            _conexion = new ConexionBd();
+            _repositorioVentas = new RepositorioVentas(_conexion.AbrirConexion());
+            var p = _repositorioVentas.GetTotalVenta(ventaId);
+            _conexion.CerrarConexion();
+            return p;
+
+        }
+
+        public void FacturarVenta(int ventaId)
+        {
+            _conexion = new ConexionBd();
+            _repositorioVentas = new RepositorioVentas(_conexion.AbrirConexion());
+            _repositorioVentas.FacturarVenta(ventaId);
+            _conexion.CerrarConexion();
+
         }
     }
 }

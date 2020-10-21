@@ -36,22 +36,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BarraPrincipalToolStrip = new System.Windows.Forms.ToolStrip();
-            this.VentasToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.CancelarToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.FinalizarVentaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ConsultarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.BuscarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.DescuentoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.PagarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.CerrarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.CodigoBarraTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelSuperiorDerecho = new System.Windows.Forms.Panel();
             this.TotalLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,14 +52,25 @@
             this.cmnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnPrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.VentasToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.CancelarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.FinalizarVentaToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.ConsultarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.BuscarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.DescuentoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.AnularVtaToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.PagarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.CerrarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelInferior.SuspendLayout();
             this.BarraPrincipalToolStrip.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelSuperiorDerecho.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VentasDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelInferior
@@ -80,9 +82,9 @@
             this.PanelInferior.Controls.Add(this.label3);
             this.PanelInferior.Controls.Add(this.label2);
             this.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelInferior.Location = new System.Drawing.Point(0, 624);
+            this.PanelInferior.Location = new System.Drawing.Point(0, 676);
             this.PanelInferior.Name = "PanelInferior";
-            this.PanelInferior.Size = new System.Drawing.Size(1184, 137);
+            this.PanelInferior.Size = new System.Drawing.Size(1184, 124);
             this.PanelInferior.TabIndex = 11;
             // 
             // TotalTextBox
@@ -155,128 +157,36 @@
             this.BuscarToolStripButton,
             this.toolStripSeparator2,
             this.DescuentoToolStripButton,
+            this.AnularVtaToolStripButton,
             this.PagarToolStripButton,
             this.toolStripSeparator3,
             this.CerrarToolStripButton});
             this.BarraPrincipalToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.BarraPrincipalToolStrip.Location = new System.Drawing.Point(1116, 80);
             this.BarraPrincipalToolStrip.Name = "BarraPrincipalToolStrip";
-            this.BarraPrincipalToolStrip.Size = new System.Drawing.Size(68, 550);
+            this.BarraPrincipalToolStrip.Size = new System.Drawing.Size(68, 612);
             this.BarraPrincipalToolStrip.TabIndex = 7;
             this.BarraPrincipalToolStrip.Text = "toolStrip1";
-            // 
-            // VentasToolStripButton
-            // 
-            this.VentasToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.buy_40px;
-            this.VentasToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.VentasToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.VentasToolStripButton.Name = "VentasToolStripButton";
-            this.VentasToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.VentasToolStripButton.Text = "Venta";
-            this.VentasToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.VentasToolStripButton.ToolTipText = "Nueva Venta";
-            this.VentasToolStripButton.Click += new System.EventHandler(this.VentasToolStripButton_Click);
-            // 
-            // CancelarToolStripButton
-            // 
-            this.CancelarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.return_purchase_40px1;
-            this.CancelarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.CancelarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CancelarToolStripButton.Name = "CancelarToolStripButton";
-            this.CancelarToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.CancelarToolStripButton.Text = "Cancelar";
-            this.CancelarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.CancelarToolStripButton.ToolTipText = "Cancelar toda la venta";
-            this.CancelarToolStripButton.Click += new System.EventHandler(this.CancelarToolStripButton_Click);
-            // 
-            // FinalizarVentaToolStripButton
-            // 
-            this.FinalizarVentaToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.add_shopping_cart_40px;
-            this.FinalizarVentaToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.FinalizarVentaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FinalizarVentaToolStripButton.Name = "FinalizarVentaToolStripButton";
-            this.FinalizarVentaToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.FinalizarVentaToolStripButton.Text = "Finalizar";
-            this.FinalizarVentaToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.FinalizarVentaToolStripButton.ToolTipText = "Finalizar la Venta";
-            this.FinalizarVentaToolStripButton.Click += new System.EventHandler(this.FinalizarVentaToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(66, 6);
             // 
-            // ConsultarToolStripButton
-            // 
-            this.ConsultarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.buying_40px;
-            this.ConsultarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ConsultarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ConsultarToolStripButton.Name = "ConsultarToolStripButton";
-            this.ConsultarToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.ConsultarToolStripButton.Text = "Consultar";
-            this.ConsultarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.ConsultarToolStripButton.ToolTipText = "Consultar Ventas";
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(66, 6);
-            // 
-            // BuscarToolStripButton
-            // 
-            this.BuscarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.search_40px;
-            this.BuscarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BuscarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BuscarToolStripButton.Name = "BuscarToolStripButton";
-            this.BuscarToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.BuscarToolStripButton.Text = "Buscar";
-            this.BuscarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BuscarToolStripButton.Click += new System.EventHandler(this.BuscarToolStripButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(66, 6);
             // 
-            // DescuentoToolStripButton
-            // 
-            this.DescuentoToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.get_a_discount_40px;
-            this.DescuentoToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.DescuentoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DescuentoToolStripButton.Name = "DescuentoToolStripButton";
-            this.DescuentoToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.DescuentoToolStripButton.Text = "Descuento";
-            this.DescuentoToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.DescuentoToolStripButton.ToolTipText = "Descuento a un item";
-            // 
-            // PagarToolStripButton
-            // 
-            this.PagarToolStripButton.Enabled = false;
-            this.PagarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.receive_cash_40px;
-            this.PagarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.PagarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PagarToolStripButton.Name = "PagarToolStripButton";
-            this.PagarToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.PagarToolStripButton.Text = "Pagar";
-            this.PagarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.PagarToolStripButton.ToolTipText = "Obtener pago de la venta";
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(66, 6);
-            // 
-            // CerrarToolStripButton
-            // 
-            this.CerrarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.close_window_40px;
-            this.CerrarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.CerrarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CerrarToolStripButton.Name = "CerrarToolStripButton";
-            this.CerrarToolStripButton.Size = new System.Drawing.Size(66, 59);
-            this.CerrarToolStripButton.Text = "Cerrar";
-            this.CerrarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.CerrarToolStripButton.ToolTipText = "Cerrar el formulario";
-            this.CerrarToolStripButton.Click += new System.EventHandler(this.CerrarToolStripButton_Click);
             // 
             // panel4
             // 
@@ -309,16 +219,6 @@
             this.label1.TabIndex = 121;
             this.label1.Text = "Cod. Barra:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::NeptunoSql.Windows.Properties.Resources.search_20px;
-            this.pictureBox1.Location = new System.Drawing.Point(112, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 120;
-            this.pictureBox1.TabStop = false;
-            // 
             // PanelSuperiorDerecho
             // 
             this.PanelSuperiorDerecho.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -344,7 +244,7 @@
             this.panel1.Controls.Add(this.VentasDataGridView);
             this.panel1.Location = new System.Drawing.Point(0, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1113, 531);
+            this.panel1.Size = new System.Drawing.Size(1113, 577);
             this.panel1.TabIndex = 8;
             // 
             // VentasDataGridView
@@ -365,7 +265,7 @@
             this.VentasDataGridView.Name = "VentasDataGridView";
             this.VentasDataGridView.ReadOnly = true;
             this.VentasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.VentasDataGridView.Size = new System.Drawing.Size(1113, 531);
+            this.VentasDataGridView.Size = new System.Drawing.Size(1113, 577);
             this.VentasDataGridView.TabIndex = 0;
             this.VentasDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VentasDataGridView_CellClick);
             // 
@@ -408,6 +308,127 @@
             this.cmnPrecioTotal.ReadOnly = true;
             this.cmnPrecioTotal.Width = 69;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::NeptunoSql.Windows.Properties.Resources.trash_15px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 5;
+            // 
+            // VentasToolStripButton
+            // 
+            this.VentasToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.buy_40px;
+            this.VentasToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.VentasToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.VentasToolStripButton.Name = "VentasToolStripButton";
+            this.VentasToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.VentasToolStripButton.Text = "Venta";
+            this.VentasToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.VentasToolStripButton.ToolTipText = "Nueva Venta";
+            this.VentasToolStripButton.Click += new System.EventHandler(this.VentasToolStripButton_Click);
+            // 
+            // CancelarToolStripButton
+            // 
+            this.CancelarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.return_purchase_40px1;
+            this.CancelarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.CancelarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CancelarToolStripButton.Name = "CancelarToolStripButton";
+            this.CancelarToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.CancelarToolStripButton.Text = "Cancelar";
+            this.CancelarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CancelarToolStripButton.ToolTipText = "Cancelar toda la venta";
+            this.CancelarToolStripButton.Click += new System.EventHandler(this.CancelarToolStripButton_Click);
+            // 
+            // FinalizarVentaToolStripButton
+            // 
+            this.FinalizarVentaToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.add_shopping_cart_40px;
+            this.FinalizarVentaToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.FinalizarVentaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FinalizarVentaToolStripButton.Name = "FinalizarVentaToolStripButton";
+            this.FinalizarVentaToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.FinalizarVentaToolStripButton.Text = "Finalizar";
+            this.FinalizarVentaToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FinalizarVentaToolStripButton.ToolTipText = "Finalizar la Venta";
+            this.FinalizarVentaToolStripButton.Click += new System.EventHandler(this.FinalizarVentaToolStripButton_Click);
+            // 
+            // ConsultarToolStripButton
+            // 
+            this.ConsultarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.buying_40px;
+            this.ConsultarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ConsultarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ConsultarToolStripButton.Name = "ConsultarToolStripButton";
+            this.ConsultarToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.ConsultarToolStripButton.Text = "Consultar";
+            this.ConsultarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ConsultarToolStripButton.ToolTipText = "Consultar Ventas";
+            // 
+            // BuscarToolStripButton
+            // 
+            this.BuscarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.search_40px;
+            this.BuscarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BuscarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BuscarToolStripButton.Name = "BuscarToolStripButton";
+            this.BuscarToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.BuscarToolStripButton.Text = "Buscar";
+            this.BuscarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BuscarToolStripButton.Click += new System.EventHandler(this.BuscarToolStripButton_Click);
+            // 
+            // DescuentoToolStripButton
+            // 
+            this.DescuentoToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.get_a_discount_40px;
+            this.DescuentoToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.DescuentoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DescuentoToolStripButton.Name = "DescuentoToolStripButton";
+            this.DescuentoToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.DescuentoToolStripButton.Text = "Descuento";
+            this.DescuentoToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.DescuentoToolStripButton.ToolTipText = "Descuento a un item";
+            // 
+            // AnularVtaToolStripButton
+            // 
+            this.AnularVtaToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.clear_shopping_cart_40px;
+            this.AnularVtaToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AnularVtaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AnularVtaToolStripButton.Name = "AnularVtaToolStripButton";
+            this.AnularVtaToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.AnularVtaToolStripButton.Text = "Anular";
+            this.AnularVtaToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // PagarToolStripButton
+            // 
+            this.PagarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.receive_cash_40px;
+            this.PagarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.PagarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PagarToolStripButton.Name = "PagarToolStripButton";
+            this.PagarToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.PagarToolStripButton.Text = "Pagar";
+            this.PagarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.PagarToolStripButton.ToolTipText = "Obtener pago de la venta";
+            this.PagarToolStripButton.Click += new System.EventHandler(this.PagarToolStripButton_Click);
+            // 
+            // CerrarToolStripButton
+            // 
+            this.CerrarToolStripButton.Image = global::NeptunoSql.Windows.Properties.Resources.close_window_40px;
+            this.CerrarToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.CerrarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CerrarToolStripButton.Name = "CerrarToolStripButton";
+            this.CerrarToolStripButton.Size = new System.Drawing.Size(66, 59);
+            this.CerrarToolStripButton.Text = "Cerrar";
+            this.CerrarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CerrarToolStripButton.ToolTipText = "Cerrar el formulario";
+            this.CerrarToolStripButton.Click += new System.EventHandler(this.CerrarToolStripButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::NeptunoSql.Windows.Properties.Resources.search_20px;
+            this.pictureBox1.Location = new System.Drawing.Point(112, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 120;
+            this.pictureBox1.TabStop = false;
+            // 
             // cmnBorrar
             // 
             this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -422,7 +443,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.ClientSize = new System.Drawing.Size(1184, 800);
             this.ControlBox = false;
             this.Controls.Add(this.PanelInferior);
             this.Controls.Add(this.BarraPrincipalToolStrip);
@@ -440,11 +461,11 @@
             this.BarraPrincipalToolStrip.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelSuperiorDerecho.ResumeLayout(false);
             this.PanelSuperiorDerecho.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VentasDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,5 +507,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnDescuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnPrecioTotal;
         private System.Windows.Forms.DataGridViewImageColumn cmnBorrar;
+        private System.Windows.Forms.ToolStripButton AnularVtaToolStripButton;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

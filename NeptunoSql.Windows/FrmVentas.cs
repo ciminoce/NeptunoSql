@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using NeptunoSql.BusinessLayer.Entities;
+using NeptunoSql.BusinessLayer.Entities.Enums;
 using NeptunoSql.ServiceLayer.Servicios;
 using NeptunoSql.ServiceLayer.Servicios.Facades;
 using NeptunoSql.Windows.Helpers;
+using NeptunoSql.Windows.Helpers.Enum;
 
 namespace NeptunoSql.Windows
 {
@@ -25,19 +27,38 @@ namespace NeptunoSql.Windows
         private void FrmVentas_Load(object sender, EventArgs e)
         {
             _servicioProductos=new ServicioProductos();
-            ManejarBarraHerramientas(true);
+            _servicioVentas=new ServicioVenta();
+            ManejarBotonesBarraHerramientasVentas(true);
+            ManejarBotonesBarraHerramientasProducto(false);
+            ManejarBotonesBarraHerramientasPagarVenta(false);
+            ManejaBotonesBarraHerramientasFinalVentas(false);
+
         }
 
-        private void ManejarBarraHerramientas(bool b)
+
+        private void ManejaBotonesBarraHerramientasFinalVentas(bool b)
+        {
+            CancelarToolStripButton.Enabled = b;
+            FinalizarVentaToolStripButton.Enabled = b;
+        }
+
+        private void ManejarBotonesBarraHerramientasPagarVenta(bool b)
+        {
+            PagarToolStripButton.Enabled = b;
+            AnularVtaToolStripButton.Enabled = b;
+        }
+
+        private void ManejarBotonesBarraHerramientasProducto(bool b)
+        {
+            BuscarToolStripButton.Enabled = b;
+            DescuentoToolStripButton.Enabled = b;
+        }
+
+        private void ManejarBotonesBarraHerramientasVentas(bool b)
         {
             VentasToolStripButton.Enabled = b;
-            CancelarToolStripButton.Enabled = !b;
-            FinalizarVentaToolStripButton.Enabled = !b;
-            BuscarToolStripButton.Enabled = !b;
-            DescuentoToolStripButton.Enabled = !b;
-            PagarToolStripButton.Enabled = b;
-            CerrarToolStripButton.Enabled = b;
             ConsultarToolStripButton.Enabled = b;
+            CerrarToolStripButton.Enabled = b;
         }
 
         private void CerrarToolStripButton_Click(object sender, EventArgs e)
@@ -47,7 +68,10 @@ namespace NeptunoSql.Windows
 
         private void VentasToolStripButton_Click(object sender, EventArgs e)
         {
-            ManejarBarraHerramientas(false);
+            ManejarBotonesBarraHerramientasVentas(false);
+            ManejarBotonesBarraHerramientasProducto(true);
+            ManejarBotonesBarraHerramientasPagarVenta(false);
+            ManejaBotonesBarraHerramientasFinalVentas(true);
             CodigoBarraTextBox.Enabled = true;
         }
 
@@ -173,6 +197,15 @@ namespace NeptunoSql.Windows
         {
             if (e.ColumnIndex==5)
             {
+                DialogResult dr = MessageBox.Show("¿Desea borrar el producto seleccionado?",
+                    "Confirmar Baja",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+                if (dr==DialogResult.No)
+                {
+                    return;
+                }
                 VentasDataGridView.Rows.RemoveAt(e.RowIndex);
                 CalcularMostrarTotales();
             }
@@ -190,14 +223,18 @@ namespace NeptunoSql.Windows
 
         private void CancelarToolStripButton_Click(object sender, EventArgs e)
         {
-            CancelarVenta();
+            InicializarControlesVenta();
         }
 
-        private void CancelarVenta()
+        private void InicializarControlesVenta()
         {
             InicializarGrilla();
             InicializarTotales();
-            ManejarBarraHerramientas(true);
+            ManejarBotonesBarraHerramientasVentas(true);
+            ManejarBotonesBarraHerramientasProducto(false);
+            ManejarBotonesBarraHerramientasPagarVenta(false);
+            ManejaBotonesBarraHerramientasFinalVentas(false);
+
             CodigoBarraTextBox.Enabled = false;
 
         }
@@ -216,6 +253,8 @@ namespace NeptunoSql.Windows
             VentasDataGridView.Rows.Clear();
         }
 
+        private IServicioVentas _servicioVentas;
+        private int VentaId = 0;
         private void FinalizarVentaToolStripButton_Click(object sender, EventArgs e)
         {
             if (VentasDataGridView.Rows.Count==0)
@@ -228,8 +267,23 @@ namespace NeptunoSql.Windows
             venta.Subtotal = CalcularTotal();
             venta.Descuentos = CalcularTotalDescuento();
             venta.Total = venta.Subtotal - venta.Descuentos;
+            venta.Estado = EstadoVenta.EnProceso;
             venta.DetalleVentas = CargarDetalleVenta();
-
+            try
+            {
+                _servicioVentas.Guardar(venta);
+                VentaId = venta.VentaId;//Para anular o pagar la venta
+                Helper.MensajeBox($"Venta Nro {venta.VentaId} guardada", Tipo.Success);
+               
+                ManejarBotonesBarraHerramientasProducto(false);
+                ManejarBotonesBarraHerramientasVentas(false);
+                ManejaBotonesBarraHerramientasFinalVentas(false);
+                ManejarBotonesBarraHerramientasPagarVenta(true);
+            }
+            catch (Exception ex)
+            {
+                Helper.MensajeBox(ex.Message, Tipo.Error);
+            }
         }
 
         private List<DetalleVenta> CargarDetalleVenta()
@@ -241,7 +295,7 @@ namespace NeptunoSql.Windows
                 detalleventa.Producto = (Producto) row.Tag;
                 detalleventa.PrecioUnitario =(decimal) row.Cells[cmnPrecioUnitario.Index].Value;
                 detalleventa.Cantidad = (decimal) row.Cells[cmnCantidad.Index].Value;
-                detalleventa.Descuento = (decimal) row.Cells[cmnDescuento.Index].Value;
+                detalleventa.Descuento = Convert.ToDecimal(row.Cells[cmnDescuento.Index].Value);
                 detalleventa.Total = (decimal) row.Cells[cmnPrecioTotal.Index].Value;
                 
                 detalleVentas.Add(detalleventa);
@@ -256,11 +310,33 @@ namespace NeptunoSql.Windows
             decimal total = 0;
             foreach (DataGridViewRow r in VentasDataGridView.Rows)
             {
-                total += (decimal)r.Cells[cmnDescuento.Index].Value;
+                total += Convert.ToDecimal(r.Cells[cmnDescuento.Index].Value);
             }
 
             return total;
 
+        }
+
+        private void PagarToolStripButton_Click(object sender, EventArgs e)
+        {
+            FrmPago frm=new FrmPago();
+            var importeVenta = _servicioVentas.GetTotalVenta(VentaId);
+            frm.SetImporteYVenta(importeVenta, VentaId);
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr==DialogResult.OK)
+            {
+                try
+                {
+                    _servicioVentas.FacturarVenta(VentaId);
+                    Helper.MensajeBox($"Venta Nro {VentaId} Facturada", Tipo.Success);
+                    VentaId = 0;
+                    InicializarControlesVenta();
+                }
+                catch (Exception exception)
+                {
+                    Helper.MensajeBox(exception.Message, Tipo.Error);
+                }
+            }
         }
     }
 }

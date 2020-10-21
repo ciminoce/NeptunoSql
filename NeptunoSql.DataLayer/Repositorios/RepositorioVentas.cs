@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using NeptunoSql.BusinessLayer.Entities;
+using NeptunoSql.BusinessLayer.Entities.Enums;
 using NeptunoSql.DataLayer.Repositorios.Facades;
 
 namespace NeptunoSql.DataLayer.Repositorios
@@ -9,6 +10,12 @@ namespace NeptunoSql.DataLayer.Repositorios
     {
         private readonly SqlConnection cn;
         private readonly SqlTransaction tran;
+
+        public RepositorioVentas(SqlConnection sqlConnection)
+        {
+            this.cn = sqlConnection;
+        }
+
         public RepositorioVentas(SqlConnection cn, SqlTransaction tran)
         {
             this.cn = cn;
@@ -20,13 +27,14 @@ namespace NeptunoSql.DataLayer.Repositorios
         {
             try
             {
-                string cadenaComando = "INSERT INTO Ingresos (Fecha, Subtotal, Descuentos, Total) " +
-                                       "VALUES (@fecha, @sub, @desc, @total)";
+                string cadenaComando = "INSERT INTO Ventas (Fecha, Subtotal, Descuentos, Total, Estado) " +
+                                       "VALUES (@fecha, @sub, @desc, @total, @estado)";
                 var comando = new SqlCommand(cadenaComando, cn, tran);
                 comando.Parameters.AddWithValue("@fecha", venta.Fecha);
                 comando.Parameters.AddWithValue("@sub", venta.Subtotal);
-                comando.Parameters.AddWithValue("@des", venta.Descuentos);
+                comando.Parameters.AddWithValue("@desc", venta.Descuentos);
                 comando.Parameters.AddWithValue("@total", venta.Total);
+                comando.Parameters.AddWithValue("@estado", venta.Estado);
 
                 comando.ExecuteNonQuery();
                 cadenaComando = "SELECT @@IDENTITY";
@@ -38,6 +46,43 @@ namespace NeptunoSql.DataLayer.Repositorios
             {
 
                 throw new Exception(e.Message);
+            }
+
+        }
+
+        public decimal GetTotalVenta(int ventaId)
+        {
+            try
+            {
+                string cadenaComando = "SELECT Total FROM Ventas WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaComando, cn);
+                comando.Parameters.AddWithValue("@id", ventaId);
+
+                return (decimal)comando.ExecuteScalar();
+                
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        public void FacturarVenta(int ventaId)
+        {
+            try
+            {
+                string cadenaComando = "UPDATE Ventas SET estado=@estado WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaComando, cn);
+                comando.Parameters.AddWithValue("@estado", EstadoVenta.Facturada);
+                comando.Parameters.AddWithValue("@id", ventaId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error al Facturar una Venta");
             }
 
         }
