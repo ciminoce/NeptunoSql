@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AnulacionVenta.cs" />
+    <Compile Include="Entities\DetalleAnulacionVenta.cs" />
     <Compile Include="Entities\Categoria.cs" />
     <Compile Include="Entities\DetalleIngreso.cs" />
     <Compile Include="Entities\DetalleVenta.cs" />

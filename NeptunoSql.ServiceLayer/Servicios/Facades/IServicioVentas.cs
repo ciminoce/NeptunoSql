@@ -7,5 +7,6 @@ namespace NeptunoSql.ServiceLayer.Servicios.Facades
         void Guardar(Venta venta);
         decimal GetTotalVenta(int ventaId);
         void FacturarVenta(int ventaId);
+        void AnularVenta(Venta venta);
     }
 }

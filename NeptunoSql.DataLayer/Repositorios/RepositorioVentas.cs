@@ -10,7 +10,7 @@ namespace NeptunoSql.DataLayer.Repositorios
     {
         private readonly SqlConnection cn;
         private readonly SqlTransaction tran;
-
+        private readonly IRepositorioDetalleVentas _repositorioDetalleVentas;
         public RepositorioVentas(SqlConnection sqlConnection)
         {
             this.cn = sqlConnection;
@@ -20,6 +20,14 @@ namespace NeptunoSql.DataLayer.Repositorios
         {
             this.cn = cn;
             this.tran = tran;
+
+        }
+
+        public RepositorioVentas(SqlConnection cn, SqlTransaction tran, IRepositorioDetalleVentas repositorioDetalleVentas)
+        {
+            this.cn = cn;
+            this.tran = tran;
+            _repositorioDetalleVentas = repositorioDetalleVentas;
 
         }
 
@@ -85,6 +93,65 @@ namespace NeptunoSql.DataLayer.Repositorios
                 throw new Exception("Error al Facturar una Venta");
             }
 
+        }
+
+        public Venta GetVentaPorId(int ventaId)
+        {
+            Venta venta = null;
+            try
+            {
+                string cadenaComando =
+                    "SELECT VentaId, Fecha, Subtotal, Descuentos, Total, Estado " +
+                    "FROM Ventas WHERE VentaId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,tran);
+                comando.Parameters.AddWithValue("@id", ventaId);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    venta = ConstruirVenta(reader);
+                }
+                reader.Close();
+                return venta;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        public void AnularVenta(int ventaId)
+        {
+            try
+            {
+                string cadenaComando = "UPDATE Ventas SET estado=@estado WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaComando, cn,tran);
+                comando.Parameters.AddWithValue("@estado", EstadoVenta.Anulada);
+                comando.Parameters.AddWithValue("@id", ventaId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error al Anular una Venta");
+            }
+        }
+
+        private Venta ConstruirVenta(SqlDataReader reader)
+        {
+            return new Venta
+            {
+                VentaId = reader.GetInt32(0),
+                Fecha = reader.GetDateTime(1),
+                Subtotal = reader.GetDecimal(2),
+                Descuentos = reader.GetDecimal(3),
+                Total = reader.GetDecimal(4),
+                Estado = (EstadoVenta) reader.GetByte(5),
+                DetalleVentas = _repositorioDetalleVentas
+                    .GetDetallesPorVenta(reader.GetInt32(0))
+            };
         }
     }
 }

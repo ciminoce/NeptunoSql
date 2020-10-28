@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using NeptunoSql.BusinessLayer;
 using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.BusinessLayer.Entities.Enums;
 using NeptunoSql.ServiceLayer.Servicios;
@@ -255,6 +256,7 @@ namespace NeptunoSql.Windows
 
         private IServicioVentas _servicioVentas;
         private int VentaId = 0;
+        private Venta venta;
         private void FinalizarVentaToolStripButton_Click(object sender, EventArgs e)
         {
             if (VentasDataGridView.Rows.Count==0)
@@ -262,7 +264,7 @@ namespace NeptunoSql.Windows
                 return;
             }
 
-            Venta venta = new Venta();
+            venta = new Venta();
             venta.Fecha=DateTime.Now;
             venta.Subtotal = CalcularTotal();
             venta.Descuentos = CalcularTotalDescuento();
@@ -337,6 +339,30 @@ namespace NeptunoSql.Windows
                     Helper.MensajeBox(exception.Message, Tipo.Error);
                 }
             }
+        }
+
+        private void AnularVtaToolStripButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show($"¿Desea anular la venta {VentaId}?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (dr==DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                _servicioVentas.AnularVenta(venta);
+                Helper.MensajeBox($"Venta Nro {VentaId} Anulada", Tipo.Success);
+                VentaId = 0;
+                venta = null;
+                InicializarControlesVenta();
+            }
+            catch (Exception exception)
+            {
+                Helper.MensajeBox(exception.Message, Tipo.Error);
+            }
+
         }
     }
 }

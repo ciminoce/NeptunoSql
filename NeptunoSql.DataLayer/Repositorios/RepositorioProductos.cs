@@ -41,7 +41,7 @@ namespace NeptunoSql.DataLayer.Repositorios
                 string cadenaComando =
                     "SELECT ProductoId, Descripcion, MarcaId, CategoriaId, PrecioUnitario, Stock, CodigoBarra, "+
                     " MedidaId, Imagen, Suspendido FROM Productos WHERE ProductoId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, _connection);
+                SqlCommand comando = new SqlCommand(cadenaComando, _connection,_tran);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if(reader.HasRows)
