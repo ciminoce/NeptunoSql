@@ -40,7 +40,19 @@ namespace NeptunoSql.Windows
 
         private bool ValidarDatos()
         {
-            return true;
+            bool valido = true;
+            if (!decimal.TryParse(DescuentoTextBox.Text,out decimal descuento))
+            {
+                valido = false;
+                errorProvider1.SetError(DescuentoTextBox,"Descuento mal ingresado");
+            }else if (descuento>importeTotal)
+            {
+                valido = false;
+                errorProvider1.SetError(DescuentoTextBox,"Descuento no válido");
+                
+            }
+
+            return valido;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

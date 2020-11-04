@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.ImporteTotalTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.VentaNroTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ImportePagadoTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.VueltoTextBox = new System.Windows.Forms.TextBox();
             this.OKButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -87,13 +90,14 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Ingrese el Importe Pagado:";
             // 
-            // textBox1
+            // ImportePagadoTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(226, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 26);
-            this.textBox1.TabIndex = 1;
+            this.ImportePagadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportePagadoTextBox.Location = new System.Drawing.Point(226, 107);
+            this.ImportePagadoTextBox.Name = "ImportePagadoTextBox";
+            this.ImportePagadoTextBox.Size = new System.Drawing.Size(193, 26);
+            this.ImportePagadoTextBox.TabIndex = 1;
+            this.ImportePagadoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ImportePagadoTextBox_KeyPress);
             // 
             // label4
             // 
@@ -107,6 +111,7 @@
             // 
             // VueltoTextBox
             // 
+            this.VueltoTextBox.Enabled = false;
             this.VueltoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VueltoTextBox.Location = new System.Drawing.Point(226, 139);
             this.VueltoTextBox.Name = "VueltoTextBox";
@@ -125,6 +130,10 @@
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,7 +145,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.VueltoTextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ImportePagadoTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ImporteTotalTextBox);
             this.Controls.Add(this.label1);
@@ -145,6 +154,7 @@
             this.Name = "FrmPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago de Venta";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,9 +167,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox VentaNroTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ImportePagadoTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox VueltoTextBox;
         private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

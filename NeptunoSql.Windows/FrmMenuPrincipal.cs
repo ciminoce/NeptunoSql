@@ -51,5 +51,10 @@ namespace NeptunoSql.Windows
             FrmVentas frm=new FrmVentas();
             frm.ShowDialog(this);
         }
+
+        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");
+        }
     }
 }

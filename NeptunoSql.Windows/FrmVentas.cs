@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
-using NeptunoSql.BusinessLayer;
 using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.BusinessLayer.Entities.Enums;
 using NeptunoSql.ServiceLayer.Servicios;
@@ -111,28 +111,32 @@ namespace NeptunoSql.Windows
 
         private void CalcularMostrarTotales()
         {
-            decimal total = CalcularTotal();
-
-            MostrarTotales(total);
-        }
-
-        private void MostrarTotales(decimal total)
-        {
-            TotalLabel.Text = total.ToString("C");
-            SubtotalTextBox.Text = total.ToString("C");
-            TotalTextBox.Text = total.ToString("C");
-        }
-
-        private decimal CalcularTotal()
-        {
+            decimal subtotal = 0;
+            decimal descuentos = 0;
             decimal total = 0;
             foreach (DataGridViewRow r in VentasDataGridView.Rows)
             {
+                subtotal += (decimal) r.Cells[cmnPrecioUnitario.Index].Value *
+                            (decimal) r.Cells[cmnCantidad.Index].Value;
+                descuentos += Convert.ToDecimal(r.Cells[cmnDescuento.Index].Value);
                 total += (decimal) r.Cells[cmnPrecioTotal.Index].Value;
             }
+            TotalLabel.Text = total.ToString("C");
+            SubtotalTextBox.Text = subtotal.ToString("C");
+            DescuentosTextBox.Text = descuentos.ToString("C");
+            TotalTextBox.Text = total.ToString("C");
 
-            return total;
+          
         }
+
+        private void MostrarTotales(decimal total, decimal descuentos)
+        {
+            TotalLabel.Text = total.ToString("C");
+            SubtotalTextBox.Text = total.ToString("C");
+
+            TotalTextBox.Text = total.ToString("C");
+        }
+
 
         private int AgregarProductoEnGrilla(Producto producto)
         {
@@ -152,7 +156,7 @@ namespace NeptunoSql.Windows
             }
             else if (cantidadVendida <= 0 || cantidadVendida > int.MaxValue)
             {
-                //TODO:Hacer el control de la cantidad que se vende por el stock
+                
                 return;
             }
 
@@ -266,9 +270,9 @@ namespace NeptunoSql.Windows
 
             venta = new Venta();
             venta.Fecha=DateTime.Now;
-            venta.Subtotal = CalcularTotal();
+            venta.Subtotal = CalcularSubTotal();
             venta.Descuentos = CalcularTotalDescuento();
-            venta.Total = venta.Subtotal - venta.Descuentos;
+            venta.Total = CalcularTotal();
             venta.Estado = EstadoVenta.EnProceso;
             venta.DetalleVentas = CargarDetalleVenta();
             try
@@ -286,6 +290,20 @@ namespace NeptunoSql.Windows
             {
                 Helper.MensajeBox(ex.Message, Tipo.Error);
             }
+        }
+
+        private decimal CalcularSubTotal()
+        {
+            return VentasDataGridView.Rows
+                .Cast<DataGridViewRow>().Sum(r =>
+                    (decimal)r.Cells[cmnPrecioUnitario.Index].Value
+                    *(decimal)r.Cells[cmnCantidad.Index].Value);
+        }
+
+        private decimal CalcularTotal()
+        {
+            return VentasDataGridView.Rows
+                .Cast<DataGridViewRow>().Sum(r => (decimal) r.Cells[cmnPrecioTotal.Index].Value);
         }
 
         private List<DetalleVenta> CargarDetalleVenta()
@@ -309,14 +327,9 @@ namespace NeptunoSql.Windows
 
         private decimal CalcularTotalDescuento()
         {
-            decimal total = 0;
-            foreach (DataGridViewRow r in VentasDataGridView.Rows)
-            {
-                total += Convert.ToDecimal(r.Cells[cmnDescuento.Index].Value);
-            }
-
-            return total;
-
+            return VentasDataGridView.Rows
+                .Cast<DataGridViewRow>().Sum(r => 
+                    Convert.ToDecimal(r.Cells[cmnDescuento.Index].Value));
         }
 
         private void PagarToolStripButton_Click(object sender, EventArgs e)
@@ -382,6 +395,8 @@ namespace NeptunoSql.Windows
                 decimal descuento = frm.GetDescuento();
                 r.Cells[3].Value = descuento;
                 r.Cells[4].Value = importeTotal - descuento;
+
+                CalcularMostrarTotales();
 
             }
         }
