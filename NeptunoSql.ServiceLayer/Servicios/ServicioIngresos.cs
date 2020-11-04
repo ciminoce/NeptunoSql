@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.DataLayer;
@@ -70,6 +71,31 @@ namespace NeptunoSql.ServiceLayer.Servicios
                tran.Rollback();
                throw new Exception(e.Message);
            }
+        }
+
+        public List<Ingreso> GetIngresos(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            _conexion = new ConexionBd();
+            SqlTransaction tran = null;
+            var listaIngresos=new List<Ingreso>();
+            try
+            {
+                SqlConnection cn = _conexion.AbrirConexion();
+                tran = cn.BeginTransaction();
+                _repositorioIngresos = new RepositorioIngresos(cn, tran);
+                _repositorioProductos = new RepositorioProductos(cn, tran);
+                _repositorioDetalleIngresos = new RepositorioDetalleIngresos(cn, tran);
+                _repositorioKardex = new RepositorioKardex(cn, tran);
+
+                listaIngresos = _repositorioIngresos.GetIngresos(fechaInicial, fechaFinal);
+                return listaIngresos;
+            }
+            catch (Exception e)
+            {
+                tran.Rollback();
+                throw new Exception(e.Message);
+            }
+
         }
     }
 }

@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.ServiceLayer.Servicios;
@@ -8,18 +14,17 @@ using NeptunoSql.Windows.Helpers;
 
 namespace NeptunoSql.Windows
 {
-    public partial class FrmBuscarProducto : Form
+    public partial class FrmBuscarProductoConsulta : Form
     {
-        private FrmIngresos frm;
-        public FrmBuscarProducto(FrmIngresos frm)
+        public FrmBuscarProductoConsulta()
         {
             InitializeComponent();
-            this.frm = frm;
         }
-
         private readonly IServicioProductos _servicio = new ServicioProductos();
-        private void FrmBuscarProducto_Load(object sender, EventArgs e)
+
+        private void FrmBuscarProductoConsulta_Load(object sender, EventArgs e)
         {
+
             CargarProductosEnGrilla();
         }
 
@@ -55,11 +60,14 @@ namespace NeptunoSql.Windows
 
             DataGridViewRow r = ProductosDataGridView.Rows[e.RowIndex];
             p = r.Tag as Producto;
-            frm.AgregarFila(p);
+            DialogResult = DialogResult.OK;
 
         }
-
         private Producto p;
+        public Producto GetProducto()
+        {
+            return p;
+        }
 
     }
 }

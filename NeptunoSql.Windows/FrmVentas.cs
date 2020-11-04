@@ -364,5 +364,26 @@ namespace NeptunoSql.Windows
             }
 
         }
+
+        private void DescuentoToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (VentasDataGridView.SelectedRows.Count==0)
+            {
+                return;
+            }
+
+            DataGridViewRow r = VentasDataGridView.SelectedRows[0];
+            decimal importeTotal =(decimal) r.Cells[4].Value;
+            FrmDescuento frm = new FrmDescuento() {Text = "Establecer descuento"};
+            frm.SetImporte(importeTotal);
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr==DialogResult.OK)
+            {
+                decimal descuento = frm.GetDescuento();
+                r.Cells[3].Value = descuento;
+                r.Cells[4].Value = importeTotal - descuento;
+
+            }
+        }
     }
 }

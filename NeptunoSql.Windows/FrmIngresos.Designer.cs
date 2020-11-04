@@ -48,29 +48,40 @@
             this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.HistoricoTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.BuscarIngresosButton = new System.Windows.Forms.Button();
+            this.FechaFinalDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.FechaInicialDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.IngresosDataGridView = new System.Windows.Forms.DataGridView();
+            this.colIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetalleDdataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KardexTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.BuscarButton = new System.Windows.Forms.Button();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.DescripcionTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.CategoriaTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.MarcaTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.IngresosLinkLabel = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.KardexDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.colMovNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaKardex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMovimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockTabControl.SuspendLayout();
             this.StockInTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -83,14 +94,19 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IngresosDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDdataGridView)).BeginInit();
             this.KardexTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KardexDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -300,43 +316,46 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.button1);
-            this.splitContainer2.Panel1.Controls.Add(this.dateTimePicker3);
-            this.splitContainer2.Panel1.Controls.Add(this.dateTimePicker2);
+            this.splitContainer2.Panel1.Controls.Add(this.BuscarIngresosButton);
+            this.splitContainer2.Panel1.Controls.Add(this.FechaFinalDateTimePicker);
+            this.splitContainer2.Panel1.Controls.Add(this.FechaInicialDateTimePicker);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer2.Size = new System.Drawing.Size(1150, 623);
             this.splitContainer2.SplitterDistance = 104;
             this.splitContainer2.TabIndex = 0;
             // 
-            // button1
+            // BuscarIngresosButton
             // 
-            this.button1.Image = global::NeptunoSql.Windows.Properties.Resources.BuscarAE;
-            this.button1.Location = new System.Drawing.Point(557, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 37);
-            this.button1.TabIndex = 117;
-            this.button1.Text = "Buscar";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BuscarIngresosButton.Image = global::NeptunoSql.Windows.Properties.Resources.BuscarAE;
+            this.BuscarIngresosButton.Location = new System.Drawing.Point(557, 9);
+            this.BuscarIngresosButton.Margin = new System.Windows.Forms.Padding(4);
+            this.BuscarIngresosButton.Name = "BuscarIngresosButton";
+            this.BuscarIngresosButton.Size = new System.Drawing.Size(105, 37);
+            this.BuscarIngresosButton.TabIndex = 117;
+            this.BuscarIngresosButton.Text = "Buscar";
+            this.BuscarIngresosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BuscarIngresosButton.UseVisualStyleBackColor = true;
+            this.BuscarIngresosButton.Click += new System.EventHandler(this.BuscarIngresosButton_Click);
             // 
-            // dateTimePicker3
+            // FechaFinalDateTimePicker
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(339, 14);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 4;
+            this.FechaFinalDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.FechaFinalDateTimePicker.Location = new System.Drawing.Point(339, 14);
+            this.FechaFinalDateTimePicker.Name = "FechaFinalDateTimePicker";
+            this.FechaFinalDateTimePicker.Size = new System.Drawing.Size(116, 20);
+            this.FechaFinalDateTimePicker.TabIndex = 4;
             // 
-            // dateTimePicker2
+            // FechaInicialDateTimePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(123, 15);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 4;
+            this.FechaInicialDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.FechaInicialDateTimePicker.Location = new System.Drawing.Point(123, 15);
+            this.FechaInicialDateTimePicker.Name = "FechaInicialDateTimePicker";
+            this.FechaInicialDateTimePicker.Size = new System.Drawing.Size(116, 20);
+            this.FechaInicialDateTimePicker.TabIndex = 4;
             // 
             // label4
             // 
@@ -347,17 +366,104 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Filtrar por fechas:";
             // 
-            // dataGridView1
+            // splitContainer4
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1150, 515);
-            this.dataGridView1.TabIndex = 0;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.IngresosDataGridView);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.DetalleDdataGridView);
+            this.splitContainer4.Size = new System.Drawing.Size(1150, 515);
+            this.splitContainer4.SplitterDistance = 404;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // IngresosDataGridView
+            // 
+            this.IngresosDataGridView.AllowUserToAddRows = false;
+            this.IngresosDataGridView.AllowUserToDeleteRows = false;
+            this.IngresosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IngresosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIngreso,
+            this.colReferencia,
+            this.colFecha,
+            this.colDetalle});
+            this.IngresosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IngresosDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.IngresosDataGridView.Name = "IngresosDataGridView";
+            this.IngresosDataGridView.ReadOnly = true;
+            this.IngresosDataGridView.Size = new System.Drawing.Size(404, 515);
+            this.IngresosDataGridView.TabIndex = 0;
+            // 
+            // colIngreso
+            // 
+            this.colIngreso.HeaderText = "Nro. Ing.";
+            this.colIngreso.Name = "colIngreso";
+            this.colIngreso.ReadOnly = true;
+            // 
+            // colReferencia
+            // 
+            this.colReferencia.HeaderText = "Referencia";
+            this.colReferencia.Name = "colReferencia";
+            this.colReferencia.ReadOnly = true;
+            // 
+            // colFecha
+            // 
+            this.colFecha.HeaderText = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.ReadOnly = true;
+            // 
+            // colDetalle
+            // 
+            this.colDetalle.HeaderText = "Detalle";
+            this.colDetalle.Name = "colDetalle";
+            this.colDetalle.ReadOnly = true;
+            // 
+            // DetalleDdataGridView
+            // 
+            this.DetalleDdataGridView.AllowUserToAddRows = false;
+            this.DetalleDdataGridView.AllowUserToDeleteRows = false;
+            this.DetalleDdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DetalleDdataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.DetalleDdataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DetalleDdataGridView.Location = new System.Drawing.Point(0, 0);
+            this.DetalleDdataGridView.MultiSelect = false;
+            this.DetalleDdataGridView.Name = "DetalleDdataGridView";
+            this.DetalleDdataGridView.ReadOnly = true;
+            this.DetalleDdataGridView.RowHeadersVisible = false;
+            this.DetalleDdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DetalleDdataGridView.Size = new System.Drawing.Size(742, 515);
+            this.DetalleDdataGridView.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Marca";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Descripción";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 74;
             // 
             // KardexTabPage
             // 
@@ -378,17 +484,13 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.BuscarButton);
-            this.splitContainer3.Panel1.Controls.Add(this.dateTimePicker4);
-            this.splitContainer3.Panel1.Controls.Add(this.dateTimePicker5);
-            this.splitContainer3.Panel1.Controls.Add(this.label10);
-            this.splitContainer3.Panel1.Controls.Add(this.label9);
             this.splitContainer3.Panel1.Controls.Add(this.panel1);
-            this.splitContainer3.Panel1.Controls.Add(this.linkLabel1);
+            this.splitContainer3.Panel1.Controls.Add(this.IngresosLinkLabel);
             this.splitContainer3.Panel1.Controls.Add(this.label5);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.dataGridView2);
+            this.splitContainer3.Panel2.Controls.Add(this.KardexDataGridView);
             this.splitContainer3.Size = new System.Drawing.Size(1156, 629);
             this.splitContainer3.SplitterDistance = 385;
             this.splitContainer3.TabIndex = 0;
@@ -404,58 +506,28 @@
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BuscarButton.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(150, 243);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker4.TabIndex = 7;
-            // 
-            // dateTimePicker5
-            // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(150, 208);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker5.TabIndex = 8;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 243);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Fecha Final:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 214);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Fecha Inicial:";
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.DescripcionTextBox);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.CategoriaTextBox);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.MarcaTextBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(23, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(345, 100);
             this.panel1.TabIndex = 5;
             // 
-            // textBox5
+            // DescripcionTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(66, 63);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(261, 20);
-            this.textBox5.TabIndex = 1;
+            this.DescripcionTextBox.Enabled = false;
+            this.DescripcionTextBox.Location = new System.Drawing.Point(66, 63);
+            this.DescripcionTextBox.Name = "DescripcionTextBox";
+            this.DescripcionTextBox.Size = new System.Drawing.Size(261, 20);
+            this.DescripcionTextBox.TabIndex = 1;
             // 
             // label8
             // 
@@ -466,12 +538,13 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Desc:";
             // 
-            // textBox4
+            // CategoriaTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(66, 37);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(261, 20);
-            this.textBox4.TabIndex = 1;
+            this.CategoriaTextBox.Enabled = false;
+            this.CategoriaTextBox.Location = new System.Drawing.Point(66, 37);
+            this.CategoriaTextBox.Name = "CategoriaTextBox";
+            this.CategoriaTextBox.Size = new System.Drawing.Size(261, 20);
+            this.CategoriaTextBox.TabIndex = 1;
             // 
             // label7
             // 
@@ -482,12 +555,13 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Categoría:";
             // 
-            // textBox3
+            // MarcaTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(66, 11);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(261, 20);
-            this.textBox3.TabIndex = 1;
+            this.MarcaTextBox.Enabled = false;
+            this.MarcaTextBox.Location = new System.Drawing.Point(66, 11);
+            this.MarcaTextBox.Name = "MarcaTextBox";
+            this.MarcaTextBox.Size = new System.Drawing.Size(261, 20);
+            this.MarcaTextBox.TabIndex = 1;
             // 
             // label6
             // 
@@ -498,16 +572,17 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Marca:";
             // 
-            // linkLabel1
+            // IngresosLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(86, 23);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(218, 17);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "[Click acá para ver los productos]";
+            this.IngresosLinkLabel.AutoSize = true;
+            this.IngresosLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IngresosLinkLabel.Location = new System.Drawing.Point(86, 23);
+            this.IngresosLinkLabel.Name = "IngresosLinkLabel";
+            this.IngresosLinkLabel.Size = new System.Drawing.Size(218, 17);
+            this.IngresosLinkLabel.TabIndex = 4;
+            this.IngresosLinkLabel.TabStop = true;
+            this.IngresosLinkLabel.Text = "[Click acá para ver los productos]";
+            this.IngresosLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IngresosLinkLabel_LinkClicked);
             // 
             // label5
             // 
@@ -518,21 +593,65 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Producto";
             // 
-            // dataGridView2
+            // KardexDataGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(767, 629);
-            this.dataGridView2.TabIndex = 0;
+            this.KardexDataGridView.AllowUserToAddRows = false;
+            this.KardexDataGridView.AllowUserToDeleteRows = false;
+            this.KardexDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.KardexDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMovNro,
+            this.colFechaKardex,
+            this.colMovimiento,
+            this.colEntrada,
+            this.colSalida,
+            this.colSaldo});
+            this.KardexDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KardexDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.KardexDataGridView.Name = "KardexDataGridView";
+            this.KardexDataGridView.ReadOnly = true;
+            this.KardexDataGridView.Size = new System.Drawing.Size(767, 629);
+            this.KardexDataGridView.TabIndex = 0;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // colMovNro
+            // 
+            this.colMovNro.HeaderText = "Mov. Nro.";
+            this.colMovNro.Name = "colMovNro";
+            this.colMovNro.ReadOnly = true;
+            // 
+            // colFechaKardex
+            // 
+            this.colFechaKardex.HeaderText = "Fecha";
+            this.colFechaKardex.Name = "colFechaKardex";
+            this.colFechaKardex.ReadOnly = true;
+            // 
+            // colMovimiento
+            // 
+            this.colMovimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colMovimiento.HeaderText = "Movimiento";
+            this.colMovimiento.Name = "colMovimiento";
+            this.colMovimiento.ReadOnly = true;
+            // 
+            // colEntrada
+            // 
+            this.colEntrada.HeaderText = "Entrada";
+            this.colEntrada.Name = "colEntrada";
+            this.colEntrada.ReadOnly = true;
+            // 
+            // colSalida
+            // 
+            this.colSalida.HeaderText = "Salida";
+            this.colSalida.Name = "colSalida";
+            this.colSalida.ReadOnly = true;
+            // 
+            // colSaldo
+            // 
+            this.colSaldo.HeaderText = "Saldo";
+            this.colSaldo.Name = "colSaldo";
+            this.colSaldo.ReadOnly = true;
             // 
             // FrmIngresos
             // 
@@ -557,7 +676,12 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.IngresosDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDdataGridView)).EndInit();
             this.KardexTabPage.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
@@ -566,7 +690,7 @@
             this.splitContainer3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KardexDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -589,32 +713,43 @@
         private System.Windows.Forms.DataGridView StockInProductosDataGridView;
         private System.Windows.Forms.TabPage HistoricoTabPage;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button BuscarIngresosButton;
+        private System.Windows.Forms.DateTimePicker FechaFinalDateTimePicker;
+        private System.Windows.Forms.DateTimePicker FechaInicialDateTimePicker;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage KardexTabPage;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Button BuscarButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox DescripcionTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox CategoriaTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox MarcaTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView KardexDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnMarca;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnCantidad;
         private System.Windows.Forms.DataGridViewImageColumn cmnBorrar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.DataGridView IngresosDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIngreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colReferencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDetalle;
+        private System.Windows.Forms.DataGridView DetalleDdataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.LinkLabel IngresosLinkLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMovNro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaKardex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMovimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEntrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSalida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSaldo;
     }
 }

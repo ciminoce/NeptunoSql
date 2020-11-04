@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using NeptunoSql.BusinessLayer.Entities;
 using NeptunoSql.DataLayer.Repositorios.Facades;
@@ -15,6 +16,43 @@ namespace NeptunoSql.DataLayer.Repositorios
             _sqlConnection = sqlConnection;
             _sqlTransaction = sqlTransaction;
         }
+        public RepositorioKardex(SqlConnection sqlConnection)
+        {
+            _sqlConnection = sqlConnection;
+        }
+
+        public List<Kardex> ConsultaKardex(Producto producto)
+        {
+            List<Kardex> lista = new List<Kardex>();
+            try
+            {
+                string strComando = "SELECT KardexId, Fecha, Movimiento, Entrada, Salida," +
+                                    "Saldo FROM Kardex WHERE ProductoId=@prod ORDER BY Fecha";
+                SqlCommand comando = new SqlCommand(strComando, _sqlConnection);
+                comando.Parameters.AddWithValue("@prod", producto.ProductoId);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Kardex kardex = new Kardex();
+                    kardex.KardexId = reader.GetInt32(0);
+                    kardex.Fecha = reader.GetDateTime(1);
+                    kardex.Movimiento = reader.GetString(2);
+                    kardex.Entrada = reader.GetDecimal(3);
+                    kardex.Salida = reader.GetDecimal(4);
+                    kardex.Saldo = reader.GetDecimal(5);
+
+                    lista.Add(kardex);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void Guardar(Kardex kardex)
         {
             try

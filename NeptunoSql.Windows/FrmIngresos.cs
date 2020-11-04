@@ -180,5 +180,89 @@ namespace NeptunoSql.Windows
         {
             _servicio=new ServicioIngresos();
         }
+
+        private List<Ingreso> ingresosFechas;
+        private void BuscarIngresosButton_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (FechaInicialDateTimePicker.Value.Date>FechaFinalDateTimePicker.Value.Date)
+            {
+                errorProvider1.SetError(FechaInicialDateTimePicker,"Fecha inicial superior a la final");
+                return;
+            }
+
+            ingresosFechas = _servicio.GetIngresos(FechaInicialDateTimePicker.Value,
+                FechaFinalDateTimePicker.Value);
+            MostrarIngresosEnGrilla();
+        }
+
+        private void MostrarKardexEnGrilla()
+        {
+            KardexDataGridView.Rows.Clear();
+            foreach (var kardex in listaKardex)
+            {
+                var r = Helper.ConstruirFila(ref KardexDataGridView);
+                SetearFilaKardex(r, kardex);
+                Helper.AgregarFila(ref KardexDataGridView,r);
+            }
+        }
+
+        private void SetearFilaKardex(DataGridViewRow r, Kardex kardex)
+        {
+            r.Cells[colMovNro.Index].Value = kardex.KardexId;
+            r.Cells[colFechaKardex.Index].Value = kardex.Fecha;
+            r.Cells[colMovimiento.Index].Value = kardex.Movimiento;
+            r.Cells[colEntrada.Index].Value = kardex.Entrada;
+            r.Cells[colSalida.Index].Value = kardex.Salida;
+            r.Cells[colSaldo.Index].Value = kardex.Saldo;
+
+        }
+
+        private void MostrarIngresosEnGrilla()
+        {
+            IngresosDataGridView.Rows.Clear();
+            foreach (var ingreso in ingresosFechas)
+            {
+                var r = Helper.ConstruirFila(ref IngresosDataGridView);
+                SetearFilaIngreso(r,ingreso);
+                Helper.AgregarFila(ref IngresosDataGridView,r);
+            }
+        }
+
+        private void SetearFilaIngreso(DataGridViewRow r, Ingreso ingreso)
+        {
+            r.Cells[colIngreso.Index].Value = ingreso.IngresoId;
+            r.Cells[colReferencia.Index].Value = ingreso.Referencia;
+            r.Cells[colFecha.Index].Value = ingreso.Fecha;
+
+            r.Tag = ingreso;
+        }
+
+        private void IngresosLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmBuscarProductoConsulta frm = new FrmBuscarProductoConsulta();
+            DialogResult dr = frm.ShowDialog(this);
+            p = frm.GetProducto();
+            MarcaTextBox.Text = p.Marca.NombreMarca;
+            CategoriaTextBox.Text = p.Categoria.NombreCategoria;
+            DescripcionTextBox.Text = p.Descripcion;
+        }
+
+        private List<Kardex> listaKardex;
+        private IServicioKardex _servicioKardex;
+        private Producto p;
+        private void BuscarButton_Click(object sender, EventArgs e)
+        {
+
+            if (_servicioKardex==null)
+            {
+                _servicioKardex=new ServicioKardex();
+            }
+
+            listaKardex = _servicioKardex.ConsultaKardex(p);
+            MostrarKardexEnGrilla();
+
+        }
+
     }
 }

@@ -34,9 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ProductosDataGridView = new System.Windows.Forms.DataGridView();
             this.cmnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnAgregar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.PasarTodosButton = new System.Windows.Forms.Button();
             this.BuscarButton = new System.Windows.Forms.Button();
+            this.cmnAgregar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.ComboBoxMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBoxMarcas.Name = "ComboBoxMarcas";
             this.ComboBoxMarcas.Size = new System.Drawing.Size(269, 21);
-            this.ComboBoxMarcas.TabIndex = 121;
+            this.ComboBoxMarcas.TabIndex = 128;
             // 
             // ComboBoxCategorias
             // 
@@ -58,7 +59,7 @@
             this.ComboBoxCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBoxCategorias.Name = "ComboBoxCategorias";
             this.ComboBoxCategorias.Size = new System.Drawing.Size(267, 21);
-            this.ComboBoxCategorias.TabIndex = 120;
+            this.ComboBoxCategorias.TabIndex = 127;
             // 
             // label3
             // 
@@ -67,7 +68,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 118;
+            this.label3.TabIndex = 125;
             this.label3.Text = "Marca:";
             // 
             // label2
@@ -77,7 +78,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 119;
+            this.label2.TabIndex = 126;
             this.label2.Text = "Categoría:";
             // 
             // ProductosDataGridView
@@ -94,7 +95,7 @@
             this.ProductosDataGridView.ReadOnly = true;
             this.ProductosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProductosDataGridView.Size = new System.Drawing.Size(640, 561);
-            this.ProductosDataGridView.TabIndex = 117;
+            this.ProductosDataGridView.TabIndex = 124;
             this.ProductosDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductosDataGridView_CellClick);
             // 
             // cmnProducto
@@ -104,12 +105,11 @@
             this.cmnProducto.Name = "cmnProducto";
             this.cmnProducto.ReadOnly = true;
             // 
-            // cmnAgregar
+            // dataGridViewImageColumn1
             // 
-            this.cmnAgregar.HeaderText = "Agregar";
-            this.cmnAgregar.Image = global::NeptunoSql.Windows.Properties.Resources.ok_15px;
-            this.cmnAgregar.Name = "cmnAgregar";
-            this.cmnAgregar.ReadOnly = true;
+            this.dataGridViewImageColumn1.HeaderText = "Agregar";
+            this.dataGridViewImageColumn1.Image = global::NeptunoSql.Windows.Properties.Resources.ok_15px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
             // PasarTodosButton
             // 
@@ -118,7 +118,7 @@
             this.PasarTodosButton.Margin = new System.Windows.Forms.Padding(4);
             this.PasarTodosButton.Name = "PasarTodosButton";
             this.PasarTodosButton.Size = new System.Drawing.Size(105, 55);
-            this.PasarTodosButton.TabIndex = 122;
+            this.PasarTodosButton.TabIndex = 129;
             this.PasarTodosButton.Text = "Pasar todo";
             this.PasarTodosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.PasarTodosButton.UseVisualStyleBackColor = true;
@@ -130,10 +130,17 @@
             this.BuscarButton.Margin = new System.Windows.Forms.Padding(4);
             this.BuscarButton.Name = "BuscarButton";
             this.BuscarButton.Size = new System.Drawing.Size(105, 55);
-            this.BuscarButton.TabIndex = 123;
+            this.BuscarButton.TabIndex = 130;
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BuscarButton.UseVisualStyleBackColor = true;
+            // 
+            // cmnAgregar
+            // 
+            this.cmnAgregar.HeaderText = "Agregar";
+            this.cmnAgregar.Image = global::NeptunoSql.Windows.Properties.Resources.ok_15px;
+            this.cmnAgregar.Name = "cmnAgregar";
+            this.cmnAgregar.ReadOnly = true;
             // 
             // FrmBuscarProducto
             // 
@@ -147,6 +154,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ProductosDataGridView);
+            this.MaximumSize = new System.Drawing.Size(816, 720);
+            this.MinimumSize = new System.Drawing.Size(816, 720);
             this.Name = "FrmBuscarProducto";
             this.Text = "FrmBuscarProducto";
             this.Load += new System.EventHandler(this.FrmBuscarProducto_Load);
@@ -167,5 +176,6 @@
         private System.Windows.Forms.DataGridView ProductosDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnProducto;
         private System.Windows.Forms.DataGridViewImageColumn cmnAgregar;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

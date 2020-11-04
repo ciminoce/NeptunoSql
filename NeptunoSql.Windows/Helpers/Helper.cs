@@ -83,5 +83,10 @@ namespace NeptunoSql.Windows.Helpers
             r.CreateCells(dgv);
             return r;
         }
+
+        public static void AgregarFila(ref DataGridView dgv, DataGridViewRow r)
+        {
+            dgv.Rows.Add(r);
+        }
     }
 }

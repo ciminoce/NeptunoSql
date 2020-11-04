@@ -50,7 +50,7 @@ namespace NeptunoSql.ServiceLayer.Servicios
                         kardex.Movimiento = $"Venta Nro {venta.VentaId}";
                         kardex.Entrada = 0;
                         kardex.Salida = detalleVenta.Cantidad;
-                        kardex.Saldo = detalleVenta.Cantidad;
+                        kardex.Saldo = -detalleVenta.Cantidad;
                     }
                     else
                     {
